@@ -2,7 +2,11 @@ body {
   margin: 0;
 }
 
-.menu-button img, .top-bar-button img, .account-button img {
+.button {
+  cursor: pointer;
+}
+
+.button img {
   position: absolute;
   left: calc(50% - 40px/2);
   top: calc(50% - 40px/2);

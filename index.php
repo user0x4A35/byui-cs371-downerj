@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="menu-button" id="bt-menu">
+      <div class="button menu-button" id="bt-menu">
         <img src="assets/icons/hamburger.png" width="40" height="40"/>
       </div>
       
@@ -15,12 +15,12 @@
         <div class="menu-bar" hidden>
         </div>
         
-        <div class="top-bar-button" id="bt-search">
+        <div class="button top-bar-button" id="bt-search">
           <img src="assets/icons/search.png" width="40" height="40"/>
         </div>
       </div>
       
-      <div class="account-button" id="bt-account">
+      <div class="button account-button" id="bt-account">
         <img src="assets/icons/user.png" width="40" height="40"/>
       </div>
     </div>
