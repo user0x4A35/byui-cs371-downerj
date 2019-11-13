@@ -1,0 +1,33 @@
+{
+  "title": "Club Sugar Cookies",
+  "summary": {
+    "prepTime": [2, 30],
+    "cookTime": [0, 20],
+    "yield": ["dozen", 2],
+    "allergies": ["tree nuts", "gluten", "egg"]
+  },
+  "ingredients": [
+    ["powdered sugar", "cup", [1, [1,2]]],
+    ["vanilla", "tsp", 1],
+    ["flour", "cup", [2, [1,2]]],
+    ["butter or margarine, softened", "cup", 1],
+    ["cream of tartar", "tsp", 1],
+    ["egg", "ea", 1],
+    ["almond extract", "tsp", [0, [1,2]]],
+    ["baking soda", "tsp", 1],
+    ["granulated sugar", "*"]
+  ],
+  "directions": [
+    "Cream together powdered sugar, margarine, egg, vanilla, and almond extract",
+    "Mix in flour, baking soda, and cream of tartar",
+    "Cover and refrigerate at least 2 hours",
+    "Preheat oven to 375°F",
+    "Divide dough into halves. Keep one half refrigerated while working on the other half",
+    "Roll each half 3/16 inches thick on lightly floured board",
+    "Cut dough halves into shapes",
+    "Sprinkle each cookie with granulated sugar and place on lightly greased sheet",
+    "Bake until edges are light brown (7 to 8 minutes)",
+    "Let cool about 5 minutes"
+  ]
+}
+
