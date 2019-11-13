@@ -14,7 +14,7 @@
     <div class="wrapper">
       <?php
         require("views/topbar.php");
-        showTopBar();
+        showTopBar("recipe");
       ?>
       
       <div class="content">
