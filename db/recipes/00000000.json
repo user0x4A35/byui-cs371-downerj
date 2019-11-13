@@ -3,8 +3,8 @@
   "summary": {
     "prepTime": [2, 30],
     "cookTime": [0, 20],
-    "yield": ["dozen", 2],
-    "allergies": ["tree nuts", "gluten", "egg"]
+    "yieldSize": ["dozen", 2],
+    "nutritionalInfo": ["tree nuts", "gluten", "egg"]
   },
   "ingredients": [
     ["powdered sugar", "cup", [1, [1,2]]],
