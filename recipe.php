@@ -29,6 +29,7 @@
           
           try {
             $recipe = getRecipe($recipeId);
+            var_dump($recipe);
           } catch (FileNotFoundException $fnfex) {
             print("Cannot find recipe $recipeId");
           } catch (FileReadException $frex) {

@@ -1,6 +1,68 @@
 <?php
   $GLOBALS["RECIPE_DIR"] = "db/recipes";
   
+  class RecipeDuration {
+    private $hours;
+    private $minutes;
+    private $seconds;
+    
+    public function __construct(integer $hours, integer $minutes, integer $seconds) {
+      $this->$hours = $hours;
+      $this->$minutes = $minutes;
+      $this->$seconds = $seconds;
+    }
+    
+    public function getHours() {
+      return $hours;
+    }
+    
+    public function getMinutes() {
+      return $minutes;
+    }
+    
+    public function getSeconds() {
+      return $seconds;
+    }
+  }
+  
+  class RecipeIngredient {
+    private $name;
+    private $units;
+    private $amount;
+    
+    public function __construct(string $name, string $units, string $amount) {
+      $this->$name = $name;
+      $this->$units = $units;
+      $this->$amount = $amount;
+    }
+    
+    public function getName() {
+      return $name;
+    }
+    
+    public function getUnits() {
+      return $units;
+    }
+    
+    public function getAmount() {
+      return $amount;
+    }
+  }
+  
+  class Recipe {
+    private $title;
+    private $prepTime;
+    private $cookTime;
+    private $yieldSize;
+    private $nutritionInfo;
+    private $ingredients;
+    private $directions;
+    
+    public function __construct(array $data) {
+      
+    }
+  }
+  
   class FileNotFoundException extends Exception {
     public function __construct($message, $code = 0, Exception $previous = null) {
       parent::__construct($message, $code, $previous);
@@ -56,5 +118,7 @@
     if ($json === false) {
       throw new FileReadException("Error reading file: $id.json");
     }
+    
+    return json_decode($json);
   }
 ?>
