@@ -3,6 +3,9 @@
 <?php
   $recipeId = $_GET["id"];
   $root = __DIR__;
+  
+  require("$root/views/topbar.php");
+  require("$root/models/recipemgmt.php");
 ?>
 
 <html>
@@ -14,7 +17,7 @@
   <body>
     <div class="wrapper">
       <?php
-        require("$root/views/topbar.php");
+        
         showTopBar("recipe");
       ?>
       
@@ -24,10 +27,12 @@
             print("<p>Error loading recipe</p>");
           }
           
-          include("$root/models/recipemgmt.php");
-          $ids = getRecipeIds();
-          foreach ($ids as $id) {
-            print("$id<br/>");
+          try {
+            $recipe = getRecipe($recipeId);
+          } catch (FileNotFoundException $fnfex) {
+            print("Cannot find recipe $recipeId");
+          } catch (FileReadException $frex) {
+            print("Error reading recipe $recipeId");
           }
         ?>
       </div>
