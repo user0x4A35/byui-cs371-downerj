@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-  $recipeID = $_GET["id"];
+  $recipeId = $_GET["id"];
+  $root = __DIR__;
 ?>
 
 <html>
@@ -13,14 +14,20 @@
   <body>
     <div class="wrapper">
       <?php
-        require("views/topbar.php");
+        require("$root/views/topbar.php");
         showTopBar("recipe");
       ?>
       
       <div class="content">
         <?php
-          if (!isSet($recipeID)) {
+          if (!isSet($recipeId)) {
             print("<p>Error loading recipe</p>");
+          }
+          
+          include("$root/models/recipemgmt.php");
+          $ids = getRecipeIds();
+          foreach ($ids as $id) {
+            print("$id<br/>");
           }
         ?>
       </div>
