@@ -34,7 +34,7 @@
     foreach ($files as $index => $file) {
       // add ID if the extension is ".json"
       $extension = substr($file, strlen($file) - 5, 5);
-      if ($extension == ".json") {
+      if ($extension === ".json") {
         $recipeId = substr($file, 0, strlen($file) - 5);
         array_push($ids, $recipeId);
       }
@@ -45,14 +45,15 @@
   
   function getRecipe($id) {
     $ids = getRecipeIds();
+    
     $index = array_search($id, $ids);
-    if ($index == false) {
+    if ($index === false) {
       throw new FileNotFoundException("File not found: $id.json");
     }
     
     $dir = $GLOBALS["RECIPE_DIR"];
     $json = file_get_contents("$dir/$id.json");
-    if ($json == false) {
+    if ($json === false) {
       throw new FileReadException("Error reading file: $id.json");
     }
   }
