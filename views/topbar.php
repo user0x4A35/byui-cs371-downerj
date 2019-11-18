@@ -18,9 +18,11 @@ function showTopBar($type) {
   <?php
     elseif ($type == "recipe"):
   ?>
+  <a href="/index.php">
   <div class="button top-bar-button" id="bt-home">
     <img src="assets/icons/home.png" width="40" height="40"/>
   </div>
+  </a>
   <?php
     endif;
   ?>
