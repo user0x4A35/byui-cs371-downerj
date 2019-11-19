@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 
 <?php
-  $recipeId = $_GET["id"];
-  $root = __DIR__;
-  
-  require("$root/views/topbar.php");
-  require("$root/models/recipemgmt.php");
+$recipeId = null;
+if (isset($_GET["id"])) {
+   $recipeId = $_GET["id"];
+}
+$root = __DIR__;
+
+require("$root/views/topbar.php");
+require("$root/models/recipemgmt.php");
 ?>
 
 <html>
@@ -17,24 +20,23 @@
   <body>
     <div class="wrapper">
       <?php
-        
-        showTopBar("recipe");
+      showTopBar("recipe");
       ?>
       
       <div class="content">
         <?php
-          if (!isSet($recipeId)) {
-            print("<p>Error loading recipe</p>");
-          }
-          
+        if ($recipeId === null) {
+          print("<p>No recipe specified</p>");
+        } else {
           try {
             $recipe = getRecipe($recipeId);
-            var_dump($recipe);
+            //var_dump($recipe);
           } catch (FileNotFoundException $fnfex) {
-            print("Cannot find recipe $recipeId");
-          } catch (FileReadException $frex) {
-            print("Error reading recipe $recipeId");
+            print("<p>Cannot find recipe $recipeId</p>");
+        } catch (FileReadException $frex) {
+            print("<p>Error reading recipe $recipeId</p>");
           }
+        }
         ?>
       </div>
     </div>
