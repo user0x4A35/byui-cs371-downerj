@@ -39,11 +39,11 @@
       return $this->numerator / $this->denominator;
     }
     
-    public function divide(integer $ratio) {
+    public function divide($ratio) {
       return new Rational($this->numerator, $this->denominator * $ratio);
     }
     
-    public function multiply(integer $ratio) {
+    public function multiply($ratio) {
       return new Rational($this->numerator * $ratio, $this->denominator);
     }
     
@@ -70,12 +70,10 @@
   class RecipeDuration {
     private $hours;
     private $minutes;
-    private $seconds;
     
-    public function __construct(integer $hours, integer $minutes, integer $seconds) {
+    public function __construct($hours, $minutes) {
       $this->hours = $hours;
       $this->minutes = $minutes;
-      $this->seconds = $seconds;
       
       $this->simplify();
     }
@@ -88,22 +86,14 @@
       return $this->minutes;
     }
     
-    public function getSeconds() {
-      return $this->seconds;
-    }
-    
     public function add(RecipeDuration $value) {
       $hours = $this->hours + $value->hours;
       $minutes = $this->minutes + $value->minutes;
-      $seconds = $this->seconds + $value->seconds;
       
-      return new RecipeDuration($hours, $minutes, $seconds);
+      return new RecipeDuration($hours, $minutes);
     }
     
     private function simplify() {
-      $this->minutes += floor($this->seconds / 60);
-      $this->seconds %= 60;
-      
       $this->hours += floor($this->minutes / 60);
       $this->minutes %= 60;
     }
@@ -117,7 +107,7 @@
     private $units;
     private $amount;
     
-    public function __construct(string $name, string $units, string $amount) {
+    public function __construct($name, $units, $amount) {
       $this->$name = $name;
       $this->$units = $units;
       $this->$amount = $amount;
@@ -125,6 +115,24 @@
     
     public function getName() {
       return $name;
+    }
+    
+    public function getUnits() {
+      return $units;
+    }
+    
+    public function getAmount() {
+      return $amount;
+    }
+  }
+  
+  class RecipeYieldSize {
+    private $units;
+    private $amount;
+    
+    public function __construct($units, $amount) {
+      $this->units = $units;
+      $this->amount = $amount;
     }
     
     public function getUnits() {
@@ -148,7 +156,8 @@
     private $ingredients;
     private $directions;
     
-    public function __construct(array $data) {
+    public function __construct($data) {
+      $this->title = $data["title"];
       
     }
   }
