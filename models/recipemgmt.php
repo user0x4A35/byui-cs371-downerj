@@ -47,6 +47,12 @@
       return new Rational($this->numerator * $ratio, $this->denominator);
     }
     
+    public function __toString() {
+      $numer = $this->numerator;
+      $denom = $this->denominator;
+      return "${numer}/${denom}";
+    }
+    
     private function simplify() {
       // ignore if 0 or 1
       if ($this->denominator < 2) {
@@ -160,22 +166,22 @@
     private $directions = [];
     
     public function __construct($data) {
-      $this->title = $data["title"];
+      $this->title = $data->title;
       $this->prepTime = new RecipeDuration(
-        $data["summary"]["prepTime"][0],
-        $data["summary"]["prepTime"][1]
+        $data->summary->prepTime[0],
+        $data->summary->prepTime[1]
       );
       $this->cookTime = new RecipeDuration(
-        $data["summary"]["cookTime"][0],
-        $data["summary"]["cookTime"][1]
+        $data->summary->cookTime[0],
+        $data->summary->cookTime[1]
       );
       $this->yieldSize = new RecipeYieldSize(
-        $data["summary"]["yieldSize"][0],
-        $data["summary"]["yieldSize"][1]
+        $data->summary->yieldSize[0],
+        $data->summary->yieldSize[1]
       );
-      $this->allergyInfo = $data["summary"]["allergyInfo"];
+      $this->allergyInfo = $data->summary->allergyInfo;
       
-      foreach ($data["ingredients"] as $str) {
+      foreach ($data->ingredients as $str) {
         $numer = 1;
         $denom = 1;
         
@@ -194,7 +200,7 @@
         );
       }
       
-      $this->directions = $data["directions"];
+      $this->directions = $data->directions;
     }
   }
   
@@ -216,6 +222,20 @@
    *
    */
   class FileReadException extends Exception {
+    public function __construct($message, $code = 0, Exception $previous = null) {
+      parent::__construct($message, $code, $previous);
+    }
+    
+    public function __toString() {
+      $class = __CLASS__;
+      return "$class: [{$this->code}]: {$this->message}\n";
+    }
+  }
+  
+  /**
+   *
+   */
+  class DecodeException extends Exception {
     public function __construct($message, $code = 0, Exception $previous = null) {
       parent::__construct($message, $code, $previous);
     }
@@ -266,6 +286,10 @@
       throw new FileReadException("Error reading file: $id.json");
     }
     
-    return json_decode($json);
+    $data = json_decode($json);
+    if ($data === null) {
+      throw new DecodeException("Error decoding file: $id.json");
+    }
+    return new Recipe($data);
   }
 ?>

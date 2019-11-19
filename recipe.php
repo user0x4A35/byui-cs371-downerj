@@ -33,8 +33,10 @@ require("$root/models/recipemgmt.php");
             //var_dump($recipe);
           } catch (FileNotFoundException $fnfex) {
             print("<p>Cannot find recipe $recipeId</p>");
-        } catch (FileReadException $frex) {
+          } catch (FileReadException $frex) {
             print("<p>Error reading recipe $recipeId</p>");
+          } catch (DecodeException $dex) {
+            print("<p>Error parsing recipe $recipeID</p>");
           }
         }
         ?>
