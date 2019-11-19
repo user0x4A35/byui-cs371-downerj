@@ -182,8 +182,6 @@
       $this->allergyInfo = $data->summary->allergyInfo;
       
       foreach ($data->ingredients as $arr) {
-        var_dump($arr);
-        
         $numer = 1;
         $denom = 1;
         
@@ -202,8 +200,6 @@
         );
         
         array_push($this->ingredients, $ingredient);
-        
-        print("<br/>");
       }
       
       $this->directions = $data->directions;

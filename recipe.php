@@ -30,7 +30,6 @@ require("$root/models/recipemgmt.php");
         } else {
           try {
             $recipe = getRecipe($recipeId);
-            var_dump($recipe);
           } catch (FileNotFoundException $fnfex) {
             print("<p>Cannot find recipe $recipeId</p>");
           } catch (FileReadException $frex) {
