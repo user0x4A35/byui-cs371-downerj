@@ -126,6 +126,9 @@
     }
   }
   
+  /**
+   *
+   */
   class RecipeYieldSize {
     private $units;
     private $amount;
@@ -153,12 +156,45 @@
     private $cookTime;
     private $yieldSize;
     private $allergyInfo;
-    private $ingredients;
-    private $directions;
+    private $ingredients = [];
+    private $directions = [];
     
     public function __construct($data) {
       $this->title = $data["title"];
+      $this->prepTime = new RecipeDuration(
+        $data["summary"]["prepTime"][0],
+        $data["summary"]["prepTime"][1]
+      );
+      $this->cookTime = new RecipeDuration(
+        $data["summary"]["cookTime"][0],
+        $data["summary"]["cookTime"][1]
+      );
+      $this->yieldSize = new RecipeYieldSize(
+        $data["summary"]["yieldSize"][0],
+        $data["summary"]["yieldSize"][1]
+      );
+      $this->allergyInfo = $data["summary"]["allergyInfo"];
       
+      foreach ($data["ingredients"] as $str) {
+        $numer = 1;
+        $denom = 1;
+        
+        $amount = $str[2];
+        if (is_array($amount)) {
+          $numer = $amount[0];
+          $denom = $amount[1];
+        } else {
+          $numer = $amount;
+        }
+        
+        $this->ingredient = new RecipeIngredient(
+          $str[0],
+          $str[1],
+          new Rational($numer, $denom)
+        );
+      }
+      
+      $this->directions = $data["directions"];
     }
   }
   
