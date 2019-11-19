@@ -144,7 +144,7 @@
     private $prepTime;
     private $cookTime;
     private $yieldSize;
-    private $nutritionInfo;
+    private $allergyInfo;
     private $ingredients;
     private $directions;
     
