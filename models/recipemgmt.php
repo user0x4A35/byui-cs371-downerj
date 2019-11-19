@@ -120,15 +120,15 @@
     }
     
     public function getName() {
-      return $name;
+      return $this->name;
     }
     
     public function getUnits() {
-      return $units;
+      return $this->units;
     }
     
     public function getAmount() {
-      return $amount;
+      return $this->amount;
     }
   }
   
@@ -145,11 +145,11 @@
     }
     
     public function getUnits() {
-      return $units;
+      return $this->units;
     }
     
     public function getAmount() {
-      return $amount;
+      return $this->amount;
     }
   }
   
@@ -181,11 +181,13 @@
       );
       $this->allergyInfo = $data->summary->allergyInfo;
       
-      foreach ($data->ingredients as $str) {
+      foreach ($data->ingredients as $arr) {
+        var_dump($arr);
+        
         $numer = 1;
         $denom = 1;
         
-        $amount = $str[2];
+        $amount = $arr[2];
         if (is_array($amount)) {
           $numer = $amount[0];
           $denom = $amount[1];
@@ -193,11 +195,15 @@
           $numer = $amount;
         }
         
-        $this->ingredient = new RecipeIngredient(
-          $str[0],
-          $str[1],
+        $ingredient = new RecipeIngredient(
+          $arr[0],
+          $arr[1],
           new Rational($numer, $denom)
         );
+        
+        array_push($this->ingredients, $ingredient);
+        
+        print("<br/>");
       }
       
       $this->directions = $data->directions;
