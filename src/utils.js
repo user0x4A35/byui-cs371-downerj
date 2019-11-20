@@ -11,28 +11,30 @@ function newElem(tagName, kwargs) {
     }
   }
   
-  function addStyles(styles) {
-    for (let attribute in styles) {
-      element.style[attribute] = styles[attribute];
+  function addClasses(classes) {
+    for (let className of classes) {
+      element.classList.add(className);
     }
   }
   
-  function setAttributes(kwargs) {
-    for (let attribtue in kwargs) {
-      let value = kwargs[attribute];
+  for (let attribute in kwargs) {
+    let value = kwargs[attribute];
+    
+    switch (attribute) {
+      case 'children':
+        addChildren(value);
+        break;
       
-      switch (attribute) {
-        case 'style':
-          addStyles(value);
-          break;
-        
-        case 'children':
-          addChildren(value);
-          break;
-        
-        default:
-          element[attribute] = value;
-      }
+      case 'classList':
+        addClasses(value);
+        break;
+      
+      case 'parent':
+        value.appendChild(element);
+        break;
+      
+      default:
+        element[attribute] = value;
     }
   }
   

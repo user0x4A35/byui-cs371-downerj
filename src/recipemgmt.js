@@ -9,14 +9,20 @@ function constructPage(data) {
   
   let recipe = new Recipe(data);
   
-  
+  let ulDirections = newElem('UL', {
+    'parent': divContent,
+  });
 }
 
 function displayError() {
-  let label = document.createElement('DIV');
-  label.classList.add('main-error');
-  label.innerText = 'Error loading recipe';
-  divContent.appendChild(label);
+  document.title = '??? | Recipe Web App';
+  lblTitle.innerText = '???';
+  
+  let label = newElem('DIV', {
+    classList: ['main-error'],
+    innerText: 'Error loading recipe',
+    parent: divContent,
+  });
 }
 
 function getRecipe(id) {
