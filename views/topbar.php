@@ -9,11 +9,11 @@ function showTopBar($type) {
   <div class="menu-bar" hidden>
   </div>
   
-  <?php if ($type == "search"): ?>
+  <?php if ($type === "search" || $type === "home"): ?>
   <div class="button top-bar-button" id="bt-search">
     <img src="assets/icons/search.png" width="40" height="40"/>
   </div>
-  <?php elseif ($type == "recipe"): ?>
+  <?php elseif ($type === "recipe"): ?>
   <a href="/index.php">
   <div class="button top-bar-button" id="bt-home">
     <img src="assets/icons/home.png" width="40" height="40"/>
@@ -22,7 +22,7 @@ function showTopBar($type) {
   <?php endif; ?>
   
   <label class="title">
-  <?php if ($type == "home"): ?>Home<?php endif; ?>
+  <?php if ($type === "home"): ?>Recipe Web App<?php endif; ?>
   </label>
 </div>
 
