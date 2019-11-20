@@ -26,6 +26,11 @@ require("views/topbar.php");
       <div class="content">
       </div>
     </div>
+    
+    <script src="ajax.js"></script>
+    <script src="rational.js"></script>
+    <script src="recipe.js"></script>
+    <script src="recipemgmt.js"></script>
   </body>
 </html>
 
