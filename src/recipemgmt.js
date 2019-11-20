@@ -1,7 +1,7 @@
 const RECIPE_DIR = "db/recipes";
 
-let lblTitle = document.getElementById('lblTitle');
-let divContent = document.getElementById('divContent');
+let lblTitle = elemById('lblTitle');
+let divContent = elemById('divContent');
 
 function constructPage(data) {
   document.title = `${data.title} | Recipe Web App`;
