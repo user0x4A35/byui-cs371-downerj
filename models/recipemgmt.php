@@ -32,20 +32,6 @@
   /**
    *
    */
-  class DecodeException extends Exception {
-    public function __construct($message, $code = 0, Exception $previous = null) {
-      parent::__construct($message, $code, $previous);
-    }
-    
-    public function __toString() {
-      $class = __CLASS__;
-      return "$class: [{$this->code}]: {$this->message}\n";
-    }
-  }
-  
-  /**
-   *
-   */
   function getRecipeIds() {
     $files = scandir($GLOBALS["RECIPE_DIR"]);
     
@@ -83,10 +69,6 @@
       throw new FileReadException("Error reading file: $id.json");
     }
     
-    $data = json_decode($json);
-    if ($data === null) {
-      throw new DecodeException("Error decoding file: $id.json");
-    }
-    return new Recipe($data);
+    return $json;
   }
 ?>
