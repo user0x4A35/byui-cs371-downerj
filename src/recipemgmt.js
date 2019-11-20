@@ -1,11 +1,15 @@
 const RECIPE_DIR = "db/recipes";
 
+let lblTitle = document.getElementById('lblTitle');
 let divContent = document.getElementById('divContent');
 
 function constructPage(data) {
-  document.title = data.title;
+  document.title = `${data.title} | Recipe Web App`;
+  lblTitle.innerText = data.title;
+  
   let recipe = new Recipe(data);
-  console.log(recipe);
+  
+  
 }
 
 function displayError() {
@@ -49,7 +53,7 @@ function getRecipe(id) {
   });
 }
 
-(() => {
+window.addEventListener('load', () => {
   let id = new URLSearchParams(window.location.search).get('id');
   getRecipe(id);
-})();
+});

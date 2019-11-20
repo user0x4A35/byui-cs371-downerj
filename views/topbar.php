@@ -21,7 +21,7 @@ function showTopBar($type) {
   </a>
   <?php endif; ?>
   
-  <label class="title">
+  <label class="title" id="lblTitle">
   <?php if ($type === "home"): ?>Recipe Web App<?php endif; ?>
   </label>
 </div>
