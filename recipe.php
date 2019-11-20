@@ -7,30 +7,11 @@ if (isset($_GET["id"])) {
 }
 
 require("views/topbar.php");
-require("models/recipemgmt.php");
-
-$message = null;
-$recipe = null;
-
-if ($recipeId === null) {
-  $message = "<p>No recipe specified</p>";
-} else {
-  try {
-    $recipe = getRecipe($recipeId);
-  } catch (FileNotFoundException $fnfex) {
-    $message = "<p>Cannot find recipe $recipeId</p>";
-  } catch (FileReadException $frex) {
-    $message = "<p>Error reading recipe $recipeId</p>";
-  } catch (DecodeException $dex) {
-    $message = "<p>Error parsing recipe $recipeId</p>";
-  }
-}
 ?>
 
 <html>
   <head>
-    <title><?php print ($recipe != null) ? $recipe->getTitle() : "???"; ?> | Recipe Web App
-    </title>
+    <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="styles/top.css"/>
@@ -39,20 +20,10 @@ if ($recipeId === null) {
   <body>
     <div class="wrapper">
       <?php
-      $title = ($recipe != null) ? $recipe->getTitle() : "???";
-      showTopBar("recipe", $title);
+      showTopBar("recipe");
       ?>
       
       <div class="content">
-        <?php
-        if ($message != null):
-          print($message);
-        else:
-        ?>
-          
-          
-          
-        <?php endif; ?>
       </div>
     </div>
   </body>

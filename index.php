@@ -11,7 +11,7 @@
     <div class="wrapper">
       <?php
         require("views/topbar.php");
-        showTopBar("search", "Home");
+        showTopBar("search");
       ?>
     </div>
   </body>

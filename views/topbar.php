@@ -1,5 +1,5 @@
 <?php
-function showTopBar($type, $title) {
+function showTopBar($type) {
 ?>
 <div class="button menu-button" id="bt-menu">
   <img src="assets/icons/hamburger.png" width="40" height="40"/>
@@ -9,31 +9,25 @@ function showTopBar($type, $title) {
   <div class="menu-bar" hidden>
   </div>
   
-  <?php
-    if ($type == "search"):
-  ?>
+  <?php if ($type == "search"): ?>
   <div class="button top-bar-button" id="bt-search">
     <img src="assets/icons/search.png" width="40" height="40"/>
   </div>
-  <?php
-    elseif ($type == "recipe"):
-  ?>
+  <?php elseif ($type == "recipe"): ?>
   <a href="/index.php">
   <div class="button top-bar-button" id="bt-home">
     <img src="assets/icons/home.png" width="40" height="40"/>
   </div>
   </a>
-  <?php
-    endif;
-  ?>
+  <?php endif; ?>
   
-  <label class="title"><?php print($title); ?></label>
+  <label class="title">
+  <?php if ($type == "home"): ?>Home<?php endif; ?>
+  </label>
 </div>
 
 <div class="button account-button" id="bt-account">
   <img src="assets/icons/user.png" width="40" height="40"/>
 </div>
-<?php
-}
-?>
+<?php } ?>
 
