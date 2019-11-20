@@ -10,7 +10,7 @@
     <div class="wrapper">
       <?php
         require("views/topbar.php");
-        showTopBar("search");
+        showTopBar("search", "Home");
       ?>
     </div>
   </body>
