@@ -2,6 +2,19 @@ body {
   margin: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+ul {
+  margin: 0;
+}
+
 .button {
   cursor: pointer;
 }
@@ -73,5 +86,11 @@ body {
   font-size: 20px;
   width: 100%;
   text-align: center;
+  padding: 10px;
+}
+
+.section {
+  border: 1px solid #000;
+  margin: 10px;
   padding: 10px;
 }

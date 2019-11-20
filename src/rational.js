@@ -10,12 +10,12 @@ class Rational {
     return Math.floor(this._numerator / this._denominator);
   }
   
-  get numeratorActual() {
-    return this._numerator;
+  get numeratorSimple() {
+    return this._numerator % this._denominator;
   }
   
   get numerator() {
-    return this._numerator % this._denominator;
+    return this._numerator;
   }
   
   get denominator() {
@@ -24,10 +24,6 @@ class Rational {
   
   get value() {
     return this._numerator / this._denominator;
-  }
-  
-  get stringValue() {
-    return `${this._numerator}/${this._denominator}`;
   }
   
   multiply(ratio) {

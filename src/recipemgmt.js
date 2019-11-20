@@ -9,9 +9,49 @@ function constructPage(data) {
   
   let recipe = new Recipe(data);
   
-  let ulDirections = newElem('UL', {
-    'parent': divContent,
+  // Create the ingredients.
+  let divIngredients = newElem('DIV', {
+    classList: ['section'],
+    parent: divContent,
   });
+  let lblIngredientsHeader = newElem('H2', {
+    innerText: 'Ingredients',
+    parent: divIngredients,
+  });
+  let ulIngredients = newElem('UL', {
+    parent: divIngredients,
+  });
+  for (let ingredient of recipe.ingredients) {
+    let amountString;
+    let unitsString;
+    let nameString = ingredient.name;
+    
+    let amount = ingredient.amount;
+    let units = ingredient.units;
+    
+    let liDirection = newElem('LI', {
+      parent: ulIngredients,
+    });
+  }
+  
+  // Create the directions.
+  let divDirections = newElem('DIV', {
+    classList: ['section'],
+    parent: divContent,
+  });
+  let lblDirectionsHeader = newElem('H2', {
+    innerText: 'Directions',
+    parent: divDirections,
+  });
+  let ulDirections = newElem('OL', {
+    parent: divDirections,
+  });
+  for (let direction of recipe.directions) {
+    let liDirection = newElem('LI', {
+      innerText: direction,
+      parent: ulDirections,
+    });
+  }
 }
 
 function displayError() {
