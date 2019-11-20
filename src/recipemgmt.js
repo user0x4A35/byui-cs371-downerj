@@ -9,53 +9,26 @@ function constructPage(data) {
   
   let recipe = new Recipe(data);
   
+  // Create the summary.
+  
   // Create the ingredients.
-  let divIngredients = newElem('DIV', {
-    classList: ['section'],
-    parent: divContent,
-  });
-  let lblIngredientsHeader = newElem('H2', {
-    innerText: 'Ingredients',
-    parent: divIngredients,
-  });
-  let ulIngredients = newElem('UL', {
-    parent: divIngredients,
-  });
+  let ingredientsString = '';
   for (let ingredient of recipe.ingredients) {
     let name = ingredient.name;
     let amount = ingredient.amount;
     let units = ingredient.units;
-    
-    let liIngredient = newElem('LI', {
-      parent: ulIngredients,
-    });
-    
-    let lblInteger;
+    let integerString = '';
     if (amount.integer > 0) {
-      lblInteger = newElem('LABEL', {
-        innerText: amount.integer,
-        parent: liIngredient,
-      });
+      integerString = `${amount.integer}`;
     }
-    
-    let supNumerator;
-    let supDenominator;
+    let fractionString = '';
     if ((amount.numeratorSimple > 0) && (amount.denominator > 1)) {
-      supNumerator = newElem('SUP', {
-        innerText: amount.numeratorSimple,
-        parent: liIngredient,
-      });
-      newElem('LABEL', {
-        innerHTML: '&frasl;',
-        parent: liIngredient,
-      });
-      subDenominator = newElem('SUB', {
-        innerText: amount.denominator,
-        parent: liIngredient,
-      });
+      fractionString = `
+        <sup>${amount.numeratorSimple}</sup>&frasl;<sub>${amount.denominator}</sub>
+      `;
     }
-    
-    let lblUnits;
+    fractionString += '&nbsp;';
+    let unitsString = '';
     if ((units !== 'ea') && (units !== '*')) {
       let pluralEs = false;
       if (amount.value > 1) {
@@ -63,48 +36,41 @@ function constructPage(data) {
           pluralEs = true;
         }
       }
-      
-      lblUnits = newElem('LABEL', {
-        innerText: ` ${units}${(pluralEs) ? 's' : ''}`,
-        parent: liIngredient,
-      });
+      unitsString = `${units}${(pluralEs) ? 's' : ''} `;
     }
-    
-    let lblName = newElem('LABEL', {
-      innerText: ` ${name}`,
-      parent: liIngredient,
-    });
+    let nameString = ingredient.name;
+    ingredientsString += `
+      <li>${integerString}${fractionString}${unitsString}${nameString}</li>`;
   }
   
+  divContent.innerHTML += `
+  <div class="section">
+    <h2>Ingredients</h2>
+    <ul>${ingredientsString}</ul>
+  </div>
+  `;
+  
   // Create the directions.
-  let divDirections = newElem('DIV', {
-    classList: ['section'],
-    parent: divContent,
-  });
-  let lblDirectionsHeader = newElem('H2', {
-    innerText: 'Directions',
-    parent: divDirections,
-  });
-  let ulDirections = newElem('OL', {
-    parent: divDirections,
-  });
+  let directionsString = '';
   for (let direction of recipe.directions) {
-    let liDirection = newElem('LI', {
-      innerText: direction,
-      parent: ulDirections,
-    });
+    directionsString += `<li>${direction}</li>`;
   }
+  divContent.innerHTML += `
+  <div class="section">
+    <h2>Directions</h2>
+    <ol>${directionsString}</ol>
+  </div>
+  `;
 }
 
 function displayError() {
   document.title = '??? | Recipe Web App';
   lblTitle.innerText = '???';
-  
-  let label = newElem('DIV', {
-    classList: ['main-error'],
-    innerText: 'Error loading recipe',
-    parent: divContent,
-  });
+  divContent.innerHTML += `
+  <div class="main-error">
+    Error loading recipe
+  </div>
+  `;
 }
 
 function getRecipe(id) {

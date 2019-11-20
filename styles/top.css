@@ -11,7 +11,7 @@ h2 {
   font-weight: bold;
 }
 
-ul {
+ul, ol {
   margin: 0;
 }
 

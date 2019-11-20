@@ -2,6 +2,7 @@ function elemById(id) {
   return document.getElementById(id);
 }
 
+/*
 function newElem(tagName, kwargs) {
   let element = document.createElement(tagName);
   
@@ -40,3 +41,5 @@ function newElem(tagName, kwargs) {
   
   return element;
 }
+*/
+
