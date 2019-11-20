@@ -23,14 +23,14 @@ require("views/topbar.php");
       showTopBar("recipe");
       ?>
       
-      <div class="content">
+      <div class="content" id="divContent">
       </div>
     </div>
     
-    <script src="ajax.js"></script>
-    <script src="rational.js"></script>
-    <script src="recipe.js"></script>
-    <script src="recipemgmt.js"></script>
+    <script src="src/ajax.js"></script>
+    <script src="src/rational.js"></script>
+    <script src="src/recipe.js"></script>
+    <script src="src/recipemgmt.js"></script>
   </body>
 </html>
 

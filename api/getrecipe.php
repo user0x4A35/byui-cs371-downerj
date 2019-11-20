@@ -1,4 +1,6 @@
 <?php
+  $root = $_SERVER['SERVER_NAME'];
+  
   if (!isset($_GET["id"])) {
     header("HTTP/1.0 400 Bad Request");
     exit();
@@ -6,7 +8,7 @@
   
   $id = $_GET["id"];
   
-  require("models/recipemgmt.php");
+  require("../models/recipemgmt.php");
   try {
     $json = getRecipe($id);
   } catch (FileNotFoundException $fnfex) {

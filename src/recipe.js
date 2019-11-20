@@ -93,6 +93,8 @@ class Recipe {
         numerator = arr[2];
       }
       
+      let amount = new Rational(numerator, denominator);
+      
       this._ingredients.push(new RecipeIngredient(name, units, amount));
     }
     

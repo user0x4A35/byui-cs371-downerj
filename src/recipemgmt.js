@@ -1,13 +1,18 @@
 const RECIPE_DIR = "db/recipes";
 
-let 
+let divContent = document.getElementById('divContent');
 
 function constructPage(data) {
-  
+  document.title = data.title;
+  let recipe = new Recipe(data);
+  console.log(recipe);
 }
 
 function displayError() {
-  
+  let label = document.createElement('DIV');
+  label.classList.add('main-error');
+  label.innerText = 'Error loading recipe';
+  divContent.appendChild(label);
 }
 
 function getRecipe(id) {
@@ -15,10 +20,13 @@ function getRecipe(id) {
     args: {id: id,},
     on: {
       '200': (json) => {
+        let data;
+        
         try {
-          let data = JSON.parse(data);
+          data = JSON.parse(json);
         } catch (ex) {
           console.error(ex.message);
+          console.log(json);
           displayError();
           return;
         }
@@ -40,3 +48,8 @@ function getRecipe(id) {
     },
   });
 }
+
+(() => {
+  let id = new URLSearchParams(window.location.search).get('id');
+  getRecipe(id);
+})();

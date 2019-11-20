@@ -1,5 +1,5 @@
 <?php
-  $GLOBALS["RECIPE_DIR"] = "db/recipes";
+  $GLOBALS["RECIPE_DIR"] = "../db/recipes";
   
   /**
    *
