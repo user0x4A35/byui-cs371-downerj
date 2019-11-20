@@ -32,6 +32,19 @@ body {
   flex-direction: row;
 }
 
+.title {
+  text-align: center;
+  width: 100%;
+  font-size: 30px;
+  line-height: 50px;
+}
+
+@media (max-width: 700px) {
+  .title {
+    font-size: 4vw;
+  }
+}
+
 .top-bar-button {
   position: relative;
   display: inline-block;

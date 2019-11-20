@@ -29,10 +29,9 @@ if ($recipeId === null) {
 
 <html>
   <head>
-    <title><?php
-    print ($recipe != null) ? $recipe->getTitle() : "???";
-    ?> | Recipe Web App
+    <title><?php print ($recipe != null) ? $recipe->getTitle() : "???"; ?> | Recipe Web App
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="styles/top.css"/>
     <link rel="shortcut icon" type="image/png" href="assets/icons/recipe.png"/>
@@ -52,9 +51,8 @@ if ($recipeId === null) {
         ?>
           
           
-        <?php
-        endif;
-        ?>
+          
+        <?php endif; ?>
       </div>
     </div>
   </body>

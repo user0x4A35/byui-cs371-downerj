@@ -27,7 +27,7 @@ function showTopBar($type, $title) {
     endif;
   ?>
   
-  <label><?php print($title); ?>
+  <label class="title"><?php print($title); ?></label>
 </div>
 
 <div class="button account-button" id="bt-account">
