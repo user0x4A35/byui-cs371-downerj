@@ -5,17 +5,41 @@ $recipeId = null;
 if (isset($_GET["id"])) {
    $recipeId = $_GET["id"];
 }
-$root = __DIR__;
 
-require("$root/views/topbar.php");
-require("$root/models/recipemgmt.php");
+require("views/topbar.php");
+require("models/recipemgmt.php");
+
+$message = "";
+$recipe = null;
+
+if ($recipeId === null) {
+  $message .= "<p>No recipe specified</p>";
+} else {
+  try {
+    $recipe = getRecipe($recipeId);
+  } catch (FileNotFoundException $fnfex) {
+    $message .= "<p>Cannot find recipe $recipeId</p>";
+  } catch (FileReadException $frex) {
+    $message .= "<p>Error reading recipe $recipeId</p>";
+  } catch (DecodeException $dex) {
+    $message .= "<p>Error parsing recipe $recipeID</p>";
+  }
+}
 ?>
 
 <html>
   <head>
-    <title>Recipe Web App</title>
+    <title><?php
+    if ($recipe != null) {
+      print($recipe->getTitle());
+    } else {
+      print("???");
+    }
+    ?> | Recipe Web App
+    </title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="styles/top.css"/>
+    <link rel="shortcut icon" type="image/png" href="assets/icons/recipe.png"/>
   </head>
   <body>
     <div class="wrapper">
@@ -25,19 +49,7 @@ require("$root/models/recipemgmt.php");
       
       <div class="content">
         <?php
-        if ($recipeId === null) {
-          print("<p>No recipe specified</p>");
-        } else {
-          try {
-            $recipe = getRecipe($recipeId);
-          } catch (FileNotFoundException $fnfex) {
-            print("<p>Cannot find recipe $recipeId</p>");
-          } catch (FileReadException $frex) {
-            print("<p>Error reading recipe $recipeId</p>");
-          } catch (DecodeException $dex) {
-            print("<p>Error parsing recipe $recipeID</p>");
-          }
-        }
+        print($message);
         ?>
       </div>
     </div>

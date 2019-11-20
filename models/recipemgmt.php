@@ -204,6 +204,34 @@
       
       $this->directions = $data->directions;
     }
+    
+    public function getTitle() {
+      return $this->title;
+    }
+    
+    public function getPrepTime() {
+      return $this->prepTime;
+    }
+    
+    public function getCookTime() {
+      return $this->cookTime;
+    }
+    
+    public function getYieldSize() {
+      return $this->yieldSize;
+    }
+    
+    public function getAllergyInfo() {
+      return $this->allergyInfo;
+    }
+    
+    public function getIngredients() {
+      return $this->ingredients;
+    }
+    
+    public function getDirections() {
+      return $this->directions;
+    }
   }
   
   /**

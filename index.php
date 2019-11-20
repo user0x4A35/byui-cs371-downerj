@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Recipe Web App</title>
+    <title>Home | Recipe Web App</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="styles/top.css"/>
+    <link rel="shortcut icon" type="image/png" href="assets/icons/recipe.png"/>
   </head>
   <body>
     <div class="wrapper">
