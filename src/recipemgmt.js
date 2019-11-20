@@ -11,10 +11,10 @@ function displayError() {
 }
 
 function getRecipe(id) {
-  ajaxGet("api/getrecipe.php", {
+  ajaxGet('api/getrecipe.php', {
     args: {id: id,},
     on: {
-      "200": (json) => {
+      '200': (json) => {
         try {
           let data = JSON.parse(data);
         } catch (ex) {
@@ -25,11 +25,15 @@ function getRecipe(id) {
         
         constructPage(data);
       },
-      "404": () => {
+      '400': () => {
+        console.error(`Invalid request`);
+        displayError();
+      },
+      '404': () => {
         console.error(`Recipe #${id} does not exist`);
         displayError();
       },
-      "500": () => {
+      '500': () => {
         console.error(`Error loading recipe #${id}`);
         displayError();
       },
