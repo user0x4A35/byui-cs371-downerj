@@ -22,15 +22,57 @@ function constructPage(data) {
     parent: divIngredients,
   });
   for (let ingredient of recipe.ingredients) {
-    let amountString;
-    let unitsString;
-    let nameString = ingredient.name;
-    
+    let name = ingredient.name;
     let amount = ingredient.amount;
     let units = ingredient.units;
     
-    let liDirection = newElem('LI', {
+    let liIngredient = newElem('LI', {
       parent: ulIngredients,
+    });
+    
+    let lblInteger;
+    if (amount.integer > 0) {
+      lblInteger = newElem('LABEL', {
+        innerText: amount.integer,
+        parent: liIngredient,
+      });
+    }
+    
+    let supNumerator;
+    let supDenominator;
+    if ((amount.numeratorSimple > 0) && (amount.denominator > 1)) {
+      supNumerator = newElem('SUP', {
+        innerText: amount.numeratorSimple,
+        parent: liIngredient,
+      });
+      newElem('LABEL', {
+        innerHTML: '&frasl;',
+        parent: liIngredient,
+      });
+      subDenominator = newElem('SUB', {
+        innerText: amount.denominator,
+        parent: liIngredient,
+      });
+    }
+    
+    let lblUnits;
+    if ((units !== 'ea') && (units !== '*')) {
+      let pluralEs = false;
+      if (amount.value > 1) {
+        if (units === 'cup') {
+          pluralEs = true;
+        }
+      }
+      
+      lblUnits = newElem('LABEL', {
+        innerText: ` ${units}${(pluralEs) ? 's' : ''}`,
+        parent: liIngredient,
+      });
+    }
+    
+    let lblName = newElem('LABEL', {
+      innerText: ` ${name}`,
+      parent: liIngredient,
     });
   }
   
