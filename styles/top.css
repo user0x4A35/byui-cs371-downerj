@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 body {
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
   
   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
   -moz-user-select: none; /* mozilla browsers */
@@ -80,6 +83,8 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   width: 50px;
   height: 50px;
   border: 1px solid black;
+  z-index: 1;
+  background-color: white;
 }
 
 .top-bar {
@@ -91,6 +96,8 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   border: 1px solid black;
   display: flex;
   flex-direction: row;
+  z-index: 1;
+  background-color: white;
 }
 
 .title {
@@ -113,6 +120,8 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   height: 50px;
   border-right: 1px solid black;
   margin: 0px;
+  z-index: 1;
+  background-color: white;
 }
 
 .account-button {
@@ -122,14 +131,16 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   width: 50px;
   height: 50px;
   border: 1px solid black;
+  z-index: 1;
+  background-color: white;
 }
 
 .content {
-  position: fixed;
+  position: absolute;
   top: calc(50px + 2px);
   width: 100%;
   height: 100%;
-  overflow: auto;
+  z-index: 0;
 }
 
 .main-error {
