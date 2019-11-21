@@ -1,14 +1,17 @@
 const RECIPE_DIR = "db/recipes";
 
-let lblTitle = elemById('lblTitle');
 let divContent = elemById('divContent');
 
 function constructPage(data) {
   document.title = `${data.title} | Recipe Web App`;
-  lblTitle.innerText = data.title;
   
   // Create the recipe object.
   let recipe = new Recipe(data);
+  
+  // Add the title.
+  divContent.innerHTML += `
+  <h1>${recipe.title}</h1>
+  `;
   
   // Create the image.
   let imageUrl = recipe.imageUrl;
@@ -146,7 +149,6 @@ function constructPage(data) {
 
 function displayError() {
   document.title = '??? | Recipe Web App';
-  lblTitle.innerText = '???';
   divContent.innerHTML += `
   <div class="main-error">
     Error loading recipe
