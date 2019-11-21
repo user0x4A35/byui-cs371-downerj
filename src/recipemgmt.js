@@ -78,19 +78,23 @@ function constructPage(data) {
     }
     let nameString = ingredient.name;
     ingredientsString += `
-    <li>
-    <label class="clickable">
-    <input type="checkbox" hidden/>
-    <div class="checkmark"></div>
-    ${integerString}${fractionString}${unitsString}${nameString}
-    </label>
-    </li>`;
+    <div class="list-item">
+      <div class="list-item-left">
+        <label class="clickable">
+          <input type="checkbox" hidden/>
+          <div class="checkmark"></div>
+        </label>
+      </div>
+      <div class="list-item-right">
+        ${integerString}${fractionString}${unitsString}${nameString}
+      </div>
+    </div>`;
   }
   
   divContent.innerHTML += `
   <div class="section">
     <h2>Ingredients</h2>
-    <ul class="no-bullets">${ingredientsString}</ul>
+    ${ingredientsString}
   </div>
   `;
   
@@ -98,19 +102,23 @@ function constructPage(data) {
   let directionsString = '';
   recipe.directions.forEach((direction, index) => {
     directionsString += `
-    <li>
-    <label class="clickable">
-    <input type="checkbox" hidden/>
-    <div class="checkmark"></div>
-    ${index + 1}. ${direction}
-    </label>
-    </li>`;
+    <div class="list-item">
+      <div class="list-item-left">
+        <label class="clickable">
+          <input type="checkbox" hidden/>
+          <div class="checkmark"></div>
+        </label>
+      </div>
+      <div class="list-item-right">
+        ${index + 1}. ${direction}
+      </div>
+    </div>`;
   });
   
   divContent.innerHTML += `
   <div class="section">
     <h2>Directions</h2>
-    <ol class="no-bullets">${directionsString}</ol>
+    ${directionsString}
   </div>
   `;
 }
