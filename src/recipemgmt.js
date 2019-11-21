@@ -77,26 +77,40 @@ function constructPage(data) {
       unitsString = `${units}${(pluralEs) ? 's' : ''} `;
     }
     let nameString = ingredient.name;
-    ingredientsString += `<li>${integerString}${fractionString}${unitsString}${nameString}</li>`;
+    ingredientsString += `
+    <li>
+    <label class="clickable">
+    <input type="checkbox" hidden/>
+    <div class="checkmark"></div>
+    ${integerString}${fractionString}${unitsString}${nameString}
+    </label>
+    </li>`;
   }
   
   divContent.innerHTML += `
   <div class="section">
     <h2>Ingredients</h2>
-    <ul>${ingredientsString}</ul>
+    <ul class="no-bullets">${ingredientsString}</ul>
   </div>
   `;
   
   // Create the directions.
   let directionsString = '';
-  for (let direction of recipe.directions) {
-    directionsString += `<li>${direction}</li>`;
-  }
+  recipe.directions.forEach((direction, index) => {
+    directionsString += `
+    <li>
+    <label class="clickable">
+    <input type="checkbox" hidden/>
+    <div class="checkmark"></div>
+    ${index + 1}. ${direction}
+    </label>
+    </li>`;
+  });
   
   divContent.innerHTML += `
   <div class="section">
     <h2>Directions</h2>
-    <ol>${directionsString}</ol>
+    <ol class="no-bullets">${directionsString}</ol>
   </div>
   `;
 }

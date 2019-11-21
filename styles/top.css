@@ -13,11 +13,54 @@ h2 {
 
 ul, ol {
   margin: 0;
+  padding-left: 20px;
 }
 
-.button {
+ul.no-bullets, ol.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.clickable, .button {
+  position: relative;
   cursor: pointer;
 }
+
+/* Custom checkboxes: https://www.w3schools.com/howto/howto_css_custom_checkbox.asp */
+.checkmark {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+}
+
+.checkmark:after {
+  --width: 5px;
+  --height: 10px;
+  
+  content: "";
+  position: absolute;
+  display: none;
+  left: calc(40% - var(--width)/2);
+  top: calc(40% - var(--height)/2);
+  width: var(--width);
+  height: var(--height);
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+input[type="checkbox"]:checked ~ .checkmark {
+  background-color: black;
+}
+
+input[type="checkbox"]:checked ~ .checkmark:after {
+  display: inline-block;
+}
+
 
 .button img {
   position: absolute;
