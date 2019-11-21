@@ -163,3 +163,4 @@ window.addEventListener('load', () => {
   let id = new URLSearchParams(window.location.search).get('id');
   getRecipe(id);
 });
+
