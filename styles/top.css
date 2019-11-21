@@ -76,6 +76,11 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   top: calc(50% - 40px/2);
 }
 
+.menu-button, .top-bar, .top-bar-button, .account-button {
+  z-index: 1;
+  background-color: white;
+}
+
 .menu-button {
   position: fixed;
   top: 0;
@@ -83,8 +88,6 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   width: 50px;
   height: 50px;
   border: 1px solid black;
-  z-index: 1;
-  background-color: white;
 }
 
 .top-bar {
@@ -96,8 +99,6 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   border: 1px solid black;
   display: flex;
   flex-direction: row;
-  z-index: 1;
-  background-color: white;
 }
 
 .title {
@@ -120,8 +121,6 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   height: 50px;
   border-right: 1px solid black;
   margin: 0px;
-  z-index: 1;
-  background-color: white;
 }
 
 .account-button {
@@ -131,8 +130,6 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   width: 50px;
   height: 50px;
   border: 1px solid black;
-  z-index: 1;
-  background-color: white;
 }
 
 .content {
