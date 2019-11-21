@@ -10,6 +10,22 @@ function constructPage(data) {
   // Create the recipe object.
   let recipe = new Recipe(data);
   
+  // Create the image.
+  let imageUrl = recipe.imageUrl;
+  if (imageUrl) {
+    divContent.innerHTML += `
+    <div class="section no-padding">
+      <img src="${imageUrl}" alt="${data.title}" class="image-fill"/>
+    </div>
+    `;
+  } else {
+    divContent.innerHTML += `
+    <div class="section">
+      No image available.
+    </div>
+    `;
+  }
+  
   // Create the summary.
   let prepTime = recipe.prepTime;
   let prepHoursString = (prepTime.hours > 0) ? `${prepTime.hours} hr` : '';

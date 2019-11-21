@@ -121,9 +121,14 @@ ul.no-bullets, ol.no-bullets {
 }
 
 .section {
+  position: relative;
   border: 1px solid #000;
   margin: 10px;
   padding: 10px;
+}
+
+.no-padding {
+  padding: 0;
 }
 
 .list-item {
@@ -175,5 +180,11 @@ input[type="checkbox"]:checked ~ .checkmark {
 
 input[type="checkbox"]:checked ~ .checkmark:after {
   display: inline-block;
+}
+
+img.image-fill {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
