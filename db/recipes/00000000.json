@@ -4,7 +4,7 @@
     "prepTime": [2, 30],
     "cookTime": [0, 20],
     "yieldSize": ["dozen", 2],
-    "allergyInfo": ["tree nuts", "gluten", "egg"]
+    "allergyInfo": ["Tree nuts", "Gluten", "Egg"]
   },
   "ingredients": [
     ["Powdered sugar", "cup", [3,2]],

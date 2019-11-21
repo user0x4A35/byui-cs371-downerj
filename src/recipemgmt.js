@@ -7,9 +7,49 @@ function constructPage(data) {
   document.title = `${data.title} | Recipe Web App`;
   lblTitle.innerText = data.title;
   
+  // Create the recipe object.
   let recipe = new Recipe(data);
   
   // Create the summary.
+  let prepTime = recipe.prepTime;
+  let prepHoursString = (prepTime.hours > 0) ? `${prepTime.hours} hr` : '';
+  let prepMinutesString = (prepTime.minutes > 0) ? ` ${prepTime.minutes} min` : '';
+  let prepTimeString = `${prepHoursString}${prepMinutesString}`;
+  
+  let cookTime = recipe.cookTime;
+  let cookHoursString = (cookTime.hours > 0) ? `${cookTime.hours} hr` : '';
+  let cookMinutesString = (cookTime.minutes > 0) ? ` ${cookTime.minutes} min` : '';
+  let cookTimeString = `${cookHoursString}${cookMinutesString}`;
+  
+  let totalTime = recipe.prepTime.add(recipe.cookTime);
+  let totalHoursString = (totalTime.hours > 0) ? `${totalTime.hours} hr` : '';
+  let totalMinutesString = (totalTime.minutes > 0) ? ` ${totalTime.minutes} min` : '';
+  let totalTimeString = `${totalHoursString}${totalMinutesString}`;
+  
+  let yieldSize = recipe.yieldSize;
+  let yieldSizeString = `${yieldSize.amount} ${yieldSize.units}`;
+  
+  let allergyInfoString = '';
+  if (recipe.allergyInfo.length > 0) {
+    recipe.allergyInfo.forEach((allergen, index) => {
+      allergyInfoString += `${allergen}${(index < recipe.allergyInfo.length - 1) ? ', ' : ''}`;
+    });
+  } else {
+    allergyInfoString = 'None';
+  }
+  
+  divContent.innerHTML += `
+  <div class="section">
+    <h2>Summary</h2>
+    <ul>
+      <li><strong>Prep Time</strong>: ${prepTimeString}</li>
+      <li><strong>Cook Time</strong>: ${cookTimeString}</li>
+      <li><strong>Total Time</strong>: ${totalTimeString}</li>
+      <li><strong>Yield Size</strong>: ${yieldSizeString}</li>
+      <li><strong>Allergy Info</strong>: ${allergyInfoString}</li>
+    </ul>
+  </div>
+  `;
   
   // Create the ingredients.
   let ingredientsString = '';
@@ -23,9 +63,7 @@ function constructPage(data) {
     }
     let fractionString = '';
     if ((amount.numeratorSimple > 0) && (amount.denominator > 1)) {
-      fractionString = `
-        <sup>${amount.numeratorSimple}</sup>&frasl;<sub>${amount.denominator}</sub>
-      `;
+      fractionString = `<sup>${amount.numeratorSimple}</sup>&frasl;<sub>${amount.denominator}</sub>`;
     }
     fractionString += '&nbsp;';
     let unitsString = '';
@@ -39,8 +77,7 @@ function constructPage(data) {
       unitsString = `${units}${(pluralEs) ? 's' : ''} `;
     }
     let nameString = ingredient.name;
-    ingredientsString += `
-      <li>${integerString}${fractionString}${unitsString}${nameString}</li>`;
+    ingredientsString += `<li>${integerString}${fractionString}${unitsString}${nameString}</li>`;
   }
   
   divContent.innerHTML += `
@@ -55,6 +92,7 @@ function constructPage(data) {
   for (let direction of recipe.directions) {
     directionsString += `<li>${direction}</li>`;
   }
+  
   divContent.innerHTML += `
   <div class="section">
     <h2>Directions</h2>
