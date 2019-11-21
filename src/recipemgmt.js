@@ -57,6 +57,7 @@ function constructPage(data) {
   divContent.innerHTML += `
   <div class="section">
     <h2>Summary</h2>
+    <hr/>
     <ul>
       <li><strong>Prep Time</strong>: ${prepTimeString}</li>
       <li><strong>Cook Time</strong>: ${cookTimeString}</li>
@@ -112,6 +113,7 @@ function constructPage(data) {
   divContent.innerHTML += `
   <div class="section">
     <h2>Ingredients</h2>
+    <hr/>
     ${ingredientsString}
   </div>
   `;
@@ -136,6 +138,7 @@ function constructPage(data) {
   divContent.innerHTML += `
   <div class="section">
     <h2>Directions</h2>
+    <hr/>
     ${directionsString}
   </div>
   `;
