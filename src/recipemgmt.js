@@ -64,8 +64,10 @@ function constructPage(data) {
     let fractionString = '';
     if ((amount.numeratorSimple > 0) && (amount.denominator > 1)) {
       fractionString = `<sup>${amount.numeratorSimple}</sup>&frasl;<sub>${amount.denominator}</sub>`;
+      fractionString += '&nbsp;';
+    } else if (amount.integer > 0) {
+      fractionString += '&nbsp;';
     }
-    fractionString += '&nbsp;';
     let unitsString = '';
     if ((units !== 'ea') && (units !== '*')) {
       let pluralEs = false;

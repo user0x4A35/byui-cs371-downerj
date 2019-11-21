@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
-:root {
-  --list-line-height: 30px;
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -39,15 +39,16 @@ ul.no-bullets, ol.no-bullets {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin-bottom: 10px;
 }
 
 .list-item-left, .list-item-right {
   display: inline-block;
-  line-height: var(--list-line-height);
 }
 
 .list-item-right {
-  padding-left: 5px;
+  margin-left: 10px;
+  width: 100%;
 }
 
 .clickable, .button {
@@ -60,8 +61,8 @@ ul.no-bullets, ol.no-bullets {
   position: relative;
   display: inline-block;
   border: 1px solid black;
-  width: var(--list-line-height);
-  height: var(--list-line-height);
+  width: 25px;
+  height: 25px;
 }
 
 .checkmark:after {
@@ -90,7 +91,6 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   display: inline-block;
 }
 
-
 .button img {
   position: absolute;
   left: calc(50% - 40px/2);
@@ -114,8 +114,8 @@ input[type="checkbox"]:checked ~ .checkmark:after {
 .top-bar {
   position: fixed;
   top: 0;
-  left: calc(50px + 1px);
-  width: calc(100% - 50px*2 - 1px*4);
+  left: calc(50px - 1px);
+  width: calc(100% - 50px*2 + 1px*2);
   height: 50px;
   border: 1px solid black;
   display: flex;
@@ -139,7 +139,7 @@ input[type="checkbox"]:checked ~ .checkmark:after {
   position: relative;
   display: inline-block;
   width: 50px;
-  height: 50px;
+  height: calc(50px - 1px*2);
   border-right: 1px solid black;
   margin: 0px;
 }
@@ -171,5 +171,5 @@ input[type="checkbox"]:checked ~ .checkmark:after {
 .section {
   border: 1px solid #000;
   margin: 10px;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
 }
