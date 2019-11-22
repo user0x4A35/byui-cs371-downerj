@@ -164,6 +164,40 @@ function constructPage(data) {
   fillNotes(recipe);
   fillIngredients(recipe);
   fillDirections(recipe);
+  
+  selYieldScale.selectedIndex = 0;
+  selYieldScale.addEventListener('input', () => {
+    updateYieldScale(recipe)
+  });
+}
+
+function updateYieldScale(recipe) {
+  let mockRecipe = {ingredients: recipe.ingredientsCopy,};
+  
+  let scale = selYieldScale.value;
+  if (scale !== 'default') {
+    for (let ingredient of mockRecipe.ingredients) {
+      switch (selYieldScale.value) {
+        case 'third':
+          ingredient.amount = ingredient.amount.divide(3);
+          break;
+        
+        case 'half':
+          ingredient.amount = ingredient.amount.divide(2);
+          break;
+        
+        case 'double':
+          ingredient.amount = ingredient.amount.multiply(2);
+          break;
+        
+        case 'triple':
+          ingredient.amount = ingredient.amount.multiply(3);
+          break;
+      }
+    }
+  }
+  
+  fillIngredients(mockRecipe);
 }
 
 function displayError() {

@@ -45,6 +45,10 @@ class RecipeIngredient {
   get amount() {
     return this._amount;
   }
+  
+  set amount(value) {
+    this._amount = value;
+  }
 }
 
 class RecipeYieldSize {
@@ -133,6 +137,18 @@ class Recipe {
   
   get ingredients() {
     return this._ingredients;
+  }
+  
+  get ingredientsCopy() {
+    let copy = [];
+    for (let ingredient of this._ingredients) {
+      copy.push(new RecipeIngredient(
+        ingredient.name,
+        ingredient.units,
+        ingredient.amount
+      ));
+    }
+    return copy;
   }
   
   get directions() {
