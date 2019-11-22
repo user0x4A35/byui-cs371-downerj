@@ -3,7 +3,7 @@
 <?php
 require("views/topbar.php");
 require("models/recipemgmt.php");
-$GLOBALS["RECIPE_DIR"] = "db/recipes";
+require("views/meta.php");
 
 $recipeId = null;
 $pageTitle = "Recipe Web App";
@@ -31,7 +31,7 @@ if (isset($_GET["id"])) {
 <html>
   <head>
     <title><?php print($pageTitle); ?></title>
-    <?php require("views/meta.php"); ?>
+    <?php getMeta($pageTitle); ?>
   </head>
   <body>
     <div class="wrapper">
