@@ -32,8 +32,8 @@
   /**
    *
    */
-  function getRecipeIds() {
-    $files = scandir($GLOBALS["RECIPE_DIR"]);
+  function getRecipeIds($dir) {
+    $files = scandir($dir);
     
     // remove "." and ".." by selecting everything from index 2 and on
     $files = array_splice($files, 2);
@@ -55,15 +55,14 @@
   /**
    *
    */
-  function getRecipe($id) {
-    $ids = getRecipeIds();
+  function getRecipe($id, $dir) {
+    $ids = getRecipeIds($dir);
     
     $index = array_search($id, $ids);
     if ($index === false) {
       throw new FileNotFoundException("File not found: $id.json");
     }
     
-    $dir = $GLOBALS["RECIPE_DIR"];
     $json = file_get_contents("$dir/$id.json");
     if ($json === false) {
       throw new FileReadException("Error reading file: $id.json");

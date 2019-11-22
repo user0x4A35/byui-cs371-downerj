@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 
 <?php
-$recipeId = null;
-if (isset($_GET["id"])) {
-   $recipeId = $_GET["id"];
-}
-
 require("views/topbar.php");
+require("models/recipemgmt.php");
+$GLOBALS["RECIPE_DIR"] = "db/recipes";
+
+$recipeId = null;
+$pageTitle = "Recipe Web App";
+if (isset($_GET["id"])) {
+  $recipeId = $_GET["id"];
+  $recipeDir = "db/recipes";
+  $data = null;
+  
+  try {
+    $json = getRecipe($recipeId, $recipeDir);
+    $data = json_decode($json);
+  } catch (FileNotFoundException $fnfex) {
+    $data = null;
+  } catch (FileReadException $frex) {
+    $data = null;
+  }
+  
+  if ($data !== null) {
+    $title = $data->{"title"};
+    $pageTitle = "${title} | Recipe Web App";
+  }
+}
 ?>
 
 <html>
   <head>
-    <title></title>
+    <title><?php print($pageTitle); ?></title>
     <?php require("views/meta.php"); ?>
   </head>
   <body>
     <div class="wrapper">
-      <?php
-      showTopBar("recipe");
-      ?>
+      <?php showTopBar("recipe"); ?>
       
       <div class="content" id="divContent">
         <h1 id="h1Title" hidden></h1>

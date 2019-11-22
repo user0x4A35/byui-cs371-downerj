@@ -18,7 +18,6 @@ let divDirections;
 let divDirectionsList;
 
 function fillTitle(recipe) {
-  document.title = `${recipe.title} | Recipe Web App`;
   h1Title.innerText = recipe.title;
   h1Title.hidden = false;
 }
@@ -244,7 +243,6 @@ function constructPage(data) {
 }
 
 function displayError() {
-  document.title = '??? | Recipe Web App';
   divContent.innerHTML += `
   <div class="main-error">
     Error loading recipe
