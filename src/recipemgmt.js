@@ -1,6 +1,21 @@
 const RECIPE_DIR = "db/recipes";
 
-let divContent = elemById('divContent');
+let divContent;
+let h1Title;
+let divImage;
+let divSummary;
+let lblPrepTime;
+let lblCookTime;
+let lblTotalTime;
+let lblYieldSize;
+let lblAllergyInfo;
+let selYieldScale;
+let divNotes;
+let ulNotes;
+let divIngredients;
+let divIngredientsList;
+let divDirections;
+let divDirectionsList;
 
 function constructPage(data) {
   document.title = `${data.title} | Recipe Web App`;
@@ -9,44 +24,43 @@ function constructPage(data) {
   let recipe = new Recipe(data);
   
   // Add the title.
-  divContent.innerHTML += `
-  <h1>${recipe.title}</h1>
-  `;
+  h1Title.innerText = recipe.title;
+  h1Title.hidden = false;
   
   // Create the image.
   let imageUrl = recipe.imageUrl;
   if (imageUrl) {
-    divContent.innerHTML += `
-    <div class="section no-padding">
+    divImage.innerHTML = `
       <img src="${imageUrl}" alt="${data.title}" class="image-fill"/>
-    </div>
     `;
   } else {
-    divContent.innerHTML += `
-    <div class="section">
-      No image available.
-    </div>
-    `;
+    divImage.classList.remove('no-padding');
+    divImage.innerText = 'No image available.';
   }
+  divImage.hidden = false;
   
   // Create the summary.
   let prepTime = recipe.prepTime;
   let prepHoursString = (prepTime.hours > 0) ? `${prepTime.hours} hr` : '';
   let prepMinutesString = (prepTime.minutes > 0) ? ` ${prepTime.minutes} min` : '';
   let prepTimeString = `${prepHoursString}${prepMinutesString}`;
+  lblPrepTime.innerText = prepTimeString;
   
   let cookTime = recipe.cookTime;
   let cookHoursString = (cookTime.hours > 0) ? `${cookTime.hours} hr` : '';
   let cookMinutesString = (cookTime.minutes > 0) ? ` ${cookTime.minutes} min` : '';
   let cookTimeString = `${cookHoursString}${cookMinutesString}`;
+  lblCookTime.innerText = cookTimeString;
   
   let totalTime = recipe.prepTime.add(recipe.cookTime);
   let totalHoursString = (totalTime.hours > 0) ? `${totalTime.hours} hr` : '';
   let totalMinutesString = (totalTime.minutes > 0) ? ` ${totalTime.minutes} min` : '';
   let totalTimeString = `${totalHoursString}${totalMinutesString}`;
+  lblTotalTime.innerText = totalTimeString;
   
   let yieldSize = recipe.yieldSize;
   let yieldSizeString = `${yieldSize.amount} ${yieldSize.units}`;
+  lblYieldSize.innerText = yieldSizeString;
   
   let allergyInfoString = '';
   if (recipe.allergyInfo.length > 0) {
@@ -56,45 +70,27 @@ function constructPage(data) {
   } else {
     allergyInfoString = 'None';
   }
+  lblAllergyInfo.innerText = allergyInfoString;
   
-  divContent.innerHTML += `
-  <div class="section">
-    <h2>Summary</h2>
-    <hr/>
-    <ul>
-      <li><strong>Prep Time</strong>: ${prepTimeString}</li>
-      <li><strong>Cook Time</strong>: ${cookTimeString}</li>
-      <li><strong>Total Time</strong>: ${totalTimeString}</li>
-      <li><strong>Yield Size</strong>: ${yieldSizeString}</li>
-      <li><strong>Allergy Info</strong>: ${allergyInfoString}</li>
-    </ul>
-  </div>
-  `;
+  divSummary.hidden = false;
   
   // Create the notes, if there are any.
   let notes = recipe.notes;
   if (notes.length > 0) {
-    let notesString = '';
+    let notesHtml = '';
     
     for (let note of notes) {
-      notesString += `
+      notesHtml += `
         <li>${note}</li>
       `;
     }
     
-    divContent.innerHTML += `
-    <div class="section">
-      <h2>Notes</h2>
-      <hr/>
-      <ul>
-        ${notesString}
-      </ul>
-    </div>
-    `;
+    divNotes.hidden = false;
+    ulNotes.innerHTML = notesHtml;
   }
   
   // Create the ingredients.
-  let ingredientsString = '';
+  let ingredientsHtml = '';
   for (let ingredient of recipe.ingredients) {
     let name = ingredient.name;
     let amount = ingredient.amount;
@@ -121,7 +117,7 @@ function constructPage(data) {
       unitsString = `${units}${(pluralEs) ? 's' : ''} `;
     }
     let nameString = ingredient.name;
-    ingredientsString += `
+    ingredientsHtml += `
     <div class="list-item">
       <div class="list-item-left">
         <label class="clickable">
@@ -134,19 +130,13 @@ function constructPage(data) {
       </div>
     </div>`;
   }
-  
-  divContent.innerHTML += `
-  <div class="section">
-    <h2>Ingredients</h2>
-    <hr/>
-    ${ingredientsString}
-  </div>
-  `;
+  divIngredientsList.innerHTML = ingredientsHtml;
+  divIngredients.hidden = false;
   
   // Create the directions.
-  let directionsString = '';
+  let directionsHtml = '';
   recipe.directions.forEach((direction, index) => {
-    directionsString += `
+    directionsHtml += `
     <div class="list-item">
       <div class="list-item-left">
         <label class="clickable">
@@ -159,14 +149,8 @@ function constructPage(data) {
       </div>
     </div>`;
   });
-  
-  divContent.innerHTML += `
-  <div class="section">
-    <h2>Directions</h2>
-    <hr/>
-    ${directionsString}
-  </div>
-  `;
+  divDirectionsList.innerHTML = directionsHtml;
+  divDirections.hidden = false;
 }
 
 function displayError() {
@@ -213,6 +197,23 @@ function getRecipe(id) {
 }
 
 window.addEventListener('load', () => {
+  divContent = elemById('divContent');
+  h1Title = elemById('h1Title');
+  divImage = elemById('divImage');
+  divSummary = elemById('divSummary');
+  lblPrepTime = elemById('lblPrepTime');
+  lblCookTime = elemById('lblCookTime');
+  lblTotalTime = elemById('lblTotalTime');
+  lblYieldSize = elemById('lblYieldSize');
+  lblAllergyInfo = elemById('lblAllergyInfo');
+  selYieldScale = elemById('selYieldScale');
+  divNotes = elemById('divNotes');
+  ulNotes = elemById('ulNotes');
+  divIngredients = elemById('divIngredients');
+  divIngredientsList = elemById('divIngredientsList');
+  divDirections = elemById('divDirections');
+  divDirectionsList = elemById('divDirectionsList');
+  
   let id = new URLSearchParams(window.location.search).get('id');
   getRecipe(id);
 });
