@@ -2,6 +2,10 @@ function elemById(id) {
   return document.getElementById(id);
 }
 
+function elemsByClass(className) {
+  return [...document.getElementsByClassName(className)];
+}
+
 function makeFractionHtml(amount) {
   let integerString = '';
   if (amount.integer > 0) {

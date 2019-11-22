@@ -162,12 +162,19 @@ function updateYieldScale(recipe) {
   let yieldSize = recipe.yieldSize.clone();
   let ingredients = recipe.ingredientsCopy;
   
+  let daggers = elemsByClass('time-note-marker');
+  let timeNote = elemById('lblTimeNote');
+  
   switch (selYieldScale.value) {
     case 'third':
       yieldSize.amount = yieldSize.amount.divide(3);
       for (let ingredient of ingredients) {
         ingredient.amount = ingredient.amount.divide(3);
       }
+      for (let dagger of daggers) {
+        dagger.hidden = false;
+      }
+      timeNote.hidden = false;
       break;
     
     case 'half':
@@ -175,6 +182,10 @@ function updateYieldScale(recipe) {
       for (let ingredient of ingredients) {
         ingredient.amount = ingredient.amount.divide(2);
       }
+      for (let dagger of daggers) {
+        dagger.hidden = false;
+      }
+      timeNote.hidden = false;
       break;
     
     case 'double':
@@ -182,6 +193,10 @@ function updateYieldScale(recipe) {
       for (let ingredient of ingredients) {
         ingredient.amount = ingredient.amount.multiply(2);
       }
+      for (let dagger of daggers) {
+        dagger.hidden = false;
+      }
+      timeNote.hidden = false;
       break;
     
     case 'triple':
@@ -189,7 +204,17 @@ function updateYieldScale(recipe) {
       for (let ingredient of ingredients) {
         ingredient.amount = ingredient.amount.multiply(3);
       }
+      for (let dagger of daggers) {
+        dagger.hidden = false;
+      }
+      timeNote.hidden = false;
       break;
+    
+    default:
+      for (let dagger of daggers) {
+        dagger.hidden = true;
+      }
+      timeNote.hidden = true;
   }
   
   let mockRecipe = {

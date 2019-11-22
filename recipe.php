@@ -30,11 +30,24 @@ require("views/topbar.php");
           <h2>Summary</h2>
           <hr/>
           <ul>
-            <li><strong>Prep Time</strong>: <label id="lblPrepTime"></label></li>
-            <li><strong>Cook Time</strong>: <label id="lblCookTime"></label></li>
-            <li><strong>Total Time</strong>: <label id="lblTotalTime"></label></li>
-            <li><strong>Yield Size</strong>: <label id="lblYieldSize"></label></li>
-            <li><strong>Yield Scale</strong>:
+            <li>
+              <strong>Prep Time</strong><label class="time-note-marker" hidden><sup>&dagger;</sup></label>:
+              <label id="lblPrepTime"></label>
+            </li>
+            <li>
+              <strong>Cook Time</strong><label class="time-note-marker" hidden><sup>&dagger;</sup></label>:
+              <label id="lblCookTime"></label>
+            </li>
+            <li>
+              <strong>Total Time</strong><label class="time-note-marker" hidden><sup>&dagger;</sup></label>:
+              <label id="lblTotalTime"></label>
+            </li>
+            <li>
+              <strong>Yield Size</strong>:
+              <label id="lblYieldSize"></label>
+            </li>
+            <li>
+              <strong>Yield Scale</strong>:
               <select id="selYieldScale">
                 <option value="default">Default</option>
                 <option value="third">1/3&times;</option>
@@ -43,7 +56,10 @@ require("views/topbar.php");
                 <option value="triple">3&times;</option>
               </select>
             </li>
-            <li><strong>Allergy Info</strong>: <label id="lblAllergyInfo"></label></li>
+            <li>
+              <strong>Allergy Info</strong>:
+              <label id="lblAllergyInfo"></label>
+            </li>
           </ul>
         </div>
         
@@ -60,9 +76,14 @@ require("views/topbar.php");
         </div>
         
         <div class="section" id="divDirections" hidden>
-          <h2>Directions</h2>
+          <h2>Directions<label class="time-note-marker" hidden><sup>&dagger;</sup></h2></label>
           <hr/>
           <div id="divDirectionsList"></div>
+        </div>
+        
+        <div class="section" id="lblTimeNote" hidden>
+          <sup>&dagger;</sup>
+          Prep and cook times may vary when scaling a recipe up or down.
         </div>
       </div>
     </div>
