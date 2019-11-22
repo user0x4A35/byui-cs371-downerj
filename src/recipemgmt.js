@@ -36,29 +36,34 @@ function fillImage(recipe) {
   divImage.hidden = false;
 }
 
-function fillSummary(recipe) {
+function fillPrepTime(recipe) {
   let prepTime = recipe.prepTime;
   let prepHoursString = (prepTime.hours > 0) ? `${prepTime.hours} hr` : '';
   let prepMinutesString = (prepTime.minutes > 0) ? ` ${prepTime.minutes} min` : '';
-  let prepTimeString = `${prepHoursString}${prepMinutesString}`;
-  lblPrepTime.innerText = prepTimeString;
-  
+  lblPrepTime.innerText = `${prepHoursString}${prepMinutesString}`;
+}
+
+function fillCookTime(recipe) {
   let cookTime = recipe.cookTime;
   let cookHoursString = (cookTime.hours > 0) ? `${cookTime.hours} hr` : '';
   let cookMinutesString = (cookTime.minutes > 0) ? ` ${cookTime.minutes} min` : '';
-  let cookTimeString = `${cookHoursString}${cookMinutesString}`;
-  lblCookTime.innerText = cookTimeString;
-  
+  lblCookTime.innerText = `${cookHoursString}${cookMinutesString}`;
+}
+
+function fillTotalTime(recipe) {
   let totalTime = recipe.prepTime.add(recipe.cookTime);
   let totalHoursString = (totalTime.hours > 0) ? `${totalTime.hours} hr` : '';
   let totalMinutesString = (totalTime.minutes > 0) ? ` ${totalTime.minutes} min` : '';
-  let totalTimeString = `${totalHoursString}${totalMinutesString}`;
-  lblTotalTime.innerText = totalTimeString;
-  
+  lblTotalTime.innerText = `${totalHoursString}${totalMinutesString}`;
+}
+
+function fillYieldSize(recipe) {
   let yieldSize = recipe.yieldSize;
-  let yieldSizeString = `${yieldSize.amount} ${yieldSize.units}`;
-  lblYieldSize.innerText = yieldSizeString;
-  
+  let amountString = makeFractionHtml(yieldSize.amount);
+  lblYieldSize.innerHTML = `${amountString}${yieldSize.units}`;
+}
+
+function fillAllergyInfo(recipe) {
   let allergyInfoString = '';
   if (recipe.allergyInfo.length > 0) {
     recipe.allergyInfo.forEach((allergen, index) => {
@@ -68,6 +73,14 @@ function fillSummary(recipe) {
     allergyInfoString = 'None';
   }
   lblAllergyInfo.innerText = allergyInfoString;
+}
+
+function fillSummary(recipe) {
+  fillPrepTime(recipe);
+  fillCookTime(recipe);
+  fillTotalTime(recipe);
+  fillYieldSize(recipe);
+  fillAllergyInfo(recipe);
   
   divSummary.hidden = false;
 }
@@ -94,17 +107,9 @@ function fillIngredients(recipe) {
     let name = ingredient.name;
     let amount = ingredient.amount;
     let units = ingredient.units;
-    let integerString = '';
-    if (amount.integer > 0) {
-      integerString = `${amount.integer}`;
-    }
-    let fractionString = '';
-    if ((amount.numeratorSimple > 0) && (amount.denominator > 1)) {
-      fractionString = `<sup>${amount.numeratorSimple}</sup>&frasl;<sub>${amount.denominator}</sub>`;
-      fractionString += '&nbsp;';
-    } else if (amount.integer > 0) {
-      fractionString += '&nbsp;';
-    }
+    
+    let amountString = makeFractionHtml(amount);
+    
     let unitsString = '';
     if ((units !== 'ea') && (units !== '*')) {
       let pluralEs = false;
@@ -125,7 +130,7 @@ function fillIngredients(recipe) {
         </label>
       </div>
       <div class="list-item-right">
-        ${integerString}${fractionString}${unitsString}${nameString}
+        ${amountString}${unitsString}${nameString}
       </div>
     </div>`;
   }
@@ -153,6 +158,48 @@ function fillDirections(recipe) {
   divDirections.hidden = false;
 }
 
+function updateYieldScale(recipe) {
+  let yieldSize = recipe.yieldSize.clone();
+  let ingredients = recipe.ingredientsCopy;
+  
+  switch (selYieldScale.value) {
+    case 'third':
+      yieldSize.amount = yieldSize.amount.divide(3);
+      for (let ingredient of ingredients) {
+        ingredient.amount = ingredient.amount.divide(3);
+      }
+      break;
+    
+    case 'half':
+      yieldSize.amount = yieldSize.amount.divide(2);
+      for (let ingredient of ingredients) {
+        ingredient.amount = ingredient.amount.divide(2);
+      }
+      break;
+    
+    case 'double':
+      yieldSize.amount = yieldSize.amount.multiply(2);
+      for (let ingredient of ingredients) {
+        ingredient.amount = ingredient.amount.multiply(2);
+      }
+      break;
+    
+    case 'triple':
+      yieldSize.amount = yieldSize.amount.multiply(3);
+      for (let ingredient of ingredients) {
+        ingredient.amount = ingredient.amount.multiply(3);
+      }
+      break;
+  }
+  
+  let mockRecipe = {
+    yieldSize: yieldSize,
+    ingredients: ingredients,
+  };
+  fillYieldSize(mockRecipe);
+  fillIngredients(mockRecipe);
+}
+
 function constructPage(data) {
   // Create the recipe object.
   let recipe = new Recipe(data);
@@ -169,35 +216,6 @@ function constructPage(data) {
   selYieldScale.addEventListener('input', () => {
     updateYieldScale(recipe)
   });
-}
-
-function updateYieldScale(recipe) {
-  let mockRecipe = {ingredients: recipe.ingredientsCopy,};
-  
-  let scale = selYieldScale.value;
-  if (scale !== 'default') {
-    for (let ingredient of mockRecipe.ingredients) {
-      switch (selYieldScale.value) {
-        case 'third':
-          ingredient.amount = ingredient.amount.divide(3);
-          break;
-        
-        case 'half':
-          ingredient.amount = ingredient.amount.divide(2);
-          break;
-        
-        case 'double':
-          ingredient.amount = ingredient.amount.multiply(2);
-          break;
-        
-        case 'triple':
-          ingredient.amount = ingredient.amount.multiply(3);
-          break;
-      }
-    }
-  }
-  
-  fillIngredients(mockRecipe);
 }
 
 function displayError() {

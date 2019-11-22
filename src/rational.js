@@ -49,4 +49,11 @@ class Rational {
       }
     }
   }
+  
+  clone() {
+    return new Rational(
+      this._numerator,
+      this._denominator
+    );
+  }
 }

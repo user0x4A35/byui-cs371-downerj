@@ -25,6 +25,13 @@ class RecipeDuration {
     this._hours += Math.floor(this.minutes / 60);
     this._minutes %= 60;
   }
+  
+  clone() {
+    return new RecipeDuration(
+      this._hours,
+      this._minutes
+    );
+  }
 }
 
 class RecipeIngredient {
@@ -49,6 +56,14 @@ class RecipeIngredient {
   set amount(value) {
     this._amount = value;
   }
+  
+  clone() {
+    return new RecipeIngredient(
+      this._name,
+      this._units,
+      this._amount.clone()
+    );
+  }
 }
 
 class RecipeYieldSize {
@@ -63,6 +78,17 @@ class RecipeYieldSize {
   
   get amount() {
     return this._amount;
+  }
+  
+  set amount(value) {
+    this._amount = value;
+  }
+  
+  clone() {
+    return new RecipeYieldSize(
+      this._units,
+      this._amount.clone()
+    );
   }
 }
 
@@ -80,7 +106,10 @@ class Recipe {
     );
     this._yieldSize = new RecipeYieldSize(
       data.summary.yieldSize[0],
-      data.summary.yieldSize[1]
+      new Rational(
+        data.summary.yieldSize[1][0],
+        data.summary.yieldSize[1][1]
+      ),
     );
     this._allergyInfo = data.summary.allergyInfo.slice();
     this._notes = data.summary.notes.slice();
@@ -89,16 +118,8 @@ class Recipe {
     for (let arr of data.ingredients) {
       let name = arr[0];
       let units = arr[1];
-      let numerator = 1;
-      let denominator = 1;
-      
-      if (arr[2] instanceof Array) {
-        numerator = arr[2][0];
-        denominator = arr[2][1];
-      } else {
-        numerator = arr[2];
-      }
-      
+      let numerator = arr[2][0];
+      let denominator = arr[2][1] || 1;
       let amount = new Rational(numerator, denominator);
       
       this._ingredients.push(new RecipeIngredient(name, units, amount));
@@ -142,11 +163,7 @@ class Recipe {
   get ingredientsCopy() {
     let copy = [];
     for (let ingredient of this._ingredients) {
-      copy.push(new RecipeIngredient(
-        ingredient.name,
-        ingredient.units,
-        ingredient.amount
-      ));
+      copy.push(ingredient.clone());
     }
     return copy;
   }

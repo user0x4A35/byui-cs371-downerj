@@ -34,16 +34,17 @@ require("views/topbar.php");
             <li><strong>Cook Time</strong>: <label id="lblCookTime"></label></li>
             <li><strong>Total Time</strong>: <label id="lblTotalTime"></label></li>
             <li><strong>Yield Size</strong>: <label id="lblYieldSize"></label></li>
+            <li><strong>Yield Scale</strong>:
+              <select id="selYieldScale">
+                <option value="default">Default</option>
+                <option value="third">1/3&times;</option>
+                <option value="half">1/2&times;</option>
+                <option value="double">2&times;</option>
+                <option value="triple">3&times;</option>
+              </select>
+            </li>
             <li><strong>Allergy Info</strong>: <label id="lblAllergyInfo"></label></li>
           </ul>
-          Yield scale:
-          <select id="selYieldScale">
-            <option value="default">Default</option>
-            <option value="third">1/3&times;</option>
-            <option value="half">1/2&times;</option>
-            <option value="double">2&times;</option>
-            <option value="triple">3&times;</option>
-          </select>
         </div>
         
         <div class="section" id="divNotes" hidden>
@@ -66,10 +67,10 @@ require("views/topbar.php");
       </div>
     </div>
     
-    <script src="src/utils.js"></script>
     <script src="src/ajax.js"></script>
     <script src="src/rational.js"></script>
     <script src="src/recipe.js"></script>
+    <script src="src/utils.js"></script>
     <script src="src/recipemgmt.js"></script>
   </body>
 </html>

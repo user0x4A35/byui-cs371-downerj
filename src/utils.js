@@ -2,44 +2,17 @@ function elemById(id) {
   return document.getElementById(id);
 }
 
-/*
-function newElem(tagName, kwargs) {
-  let element = document.createElement(tagName);
-  
-  function addChildren(children) {
-    for (let child of children) {
-      element.appendChild(child);
-    }
+function makeFractionHtml(amount) {
+  let integerString = '';
+  if (amount.integer > 0) {
+    integerString += `${amount.integer}`;
   }
-  
-  function addClasses(classes) {
-    for (let className of classes) {
-      element.classList.add(className);
-    }
+  let fractionString = '';
+  if ((amount.numeratorSimple > 0) && (amount.denominator > 1)) {
+    fractionString = `<sup>${amount.numeratorSimple}</sup>&frasl;<sub>${amount.denominator}</sub>`;
+    fractionString += '&nbsp;';
+  } else if (amount.integer > 0) {
+    fractionString += '&nbsp;';
   }
-  
-  for (let attribute in kwargs) {
-    let value = kwargs[attribute];
-    
-    switch (attribute) {
-      case 'children':
-        addChildren(value);
-        break;
-      
-      case 'classList':
-        addClasses(value);
-        break;
-      
-      case 'parent':
-        value.appendChild(element);
-        break;
-      
-      default:
-        element[attribute] = value;
-    }
-  }
-  
-  return element;
+  return `${integerString}${fractionString}`;
 }
-*/
-

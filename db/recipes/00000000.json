@@ -4,20 +4,20 @@
   "summary": {
     "prepTime": [2, 30],
     "cookTime": [0, 20],
-    "yieldSize": ["dozen", 2],
+    "yieldSize": ["dozen", [2, 1]],
     "allergyInfo": ["Tree nuts", "Gluten", "Egg"],
     "notes": []
   },
   "ingredients": [
     ["Powdered sugar", "cup", [3,2]],
-    ["Vanilla", "tsp", 1],
+    ["Vanilla", "tsp", [1, 1]],
     ["Flour", "cup", [5,2]],
-    ["Butter or margarine, softened", "cup", 1],
-    ["Cream of tartar", "tsp", 1],
-    ["Egg(s)", "ea", 1],
+    ["Butter or margarine, softened", "cup", [1, 1]],
+    ["Cream of tartar", "tsp", [1, 1]],
+    ["Egg(s)", "ea", [1, 1]],
     ["Almond extract", "tsp", [1,2]],
-    ["Baking soda", "tsp", 1],
-    ["Granulated sugar", "*", 0]
+    ["Baking soda", "tsp", [1, 1]],
+    ["Granulated sugar", "*", [0, 1]]
   ],
   "directions": [
     "Cream together powdered sugar, margarine, egg, vanilla, and almond extract.",
