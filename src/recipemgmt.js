@@ -17,17 +17,13 @@ let divIngredientsList;
 let divDirections;
 let divDirectionsList;
 
-function constructPage(data) {
-  document.title = `${data.title} | Recipe Web App`;
-  
-  // Create the recipe object.
-  let recipe = new Recipe(data);
-  
-  // Add the title.
+function fillTitle(recipe) {
+  document.title = `${recipe.title} | Recipe Web App`;
   h1Title.innerText = recipe.title;
   h1Title.hidden = false;
-  
-  // Create the image.
+}
+
+function fillImage(recipe) {
   let imageUrl = recipe.imageUrl;
   if (imageUrl) {
     divImage.innerHTML = `
@@ -38,8 +34,9 @@ function constructPage(data) {
     divImage.innerText = 'No image available.';
   }
   divImage.hidden = false;
-  
-  // Create the summary.
+}
+
+function fillSummary(recipe) {
   let prepTime = recipe.prepTime;
   let prepHoursString = (prepTime.hours > 0) ? `${prepTime.hours} hr` : '';
   let prepMinutesString = (prepTime.minutes > 0) ? ` ${prepTime.minutes} min` : '';
@@ -73,8 +70,9 @@ function constructPage(data) {
   lblAllergyInfo.innerText = allergyInfoString;
   
   divSummary.hidden = false;
-  
-  // Create the notes, if there are any.
+}
+
+function fillNotes(recipe) {
   let notes = recipe.notes;
   if (notes.length > 0) {
     let notesHtml = '';
@@ -88,8 +86,9 @@ function constructPage(data) {
     divNotes.hidden = false;
     ulNotes.innerHTML = notesHtml;
   }
-  
-  // Create the ingredients.
+}
+
+function fillIngredients(recipe) {
   let ingredientsHtml = '';
   for (let ingredient of recipe.ingredients) {
     let name = ingredient.name;
@@ -132,8 +131,9 @@ function constructPage(data) {
   }
   divIngredientsList.innerHTML = ingredientsHtml;
   divIngredients.hidden = false;
-  
-  // Create the directions.
+}
+
+function fillDirections(recipe) {
   let directionsHtml = '';
   recipe.directions.forEach((direction, index) => {
     directionsHtml += `
@@ -151,6 +151,19 @@ function constructPage(data) {
   });
   divDirectionsList.innerHTML = directionsHtml;
   divDirections.hidden = false;
+}
+
+function constructPage(data) {
+  // Create the recipe object.
+  let recipe = new Recipe(data);
+  
+  // Fill in the rest of the page.
+  fillTitle(recipe);
+  fillImage(recipe);
+  fillSummary(recipe);
+  fillNotes(recipe);
+  fillIngredients(recipe);
+  fillDirections(recipe);
 }
 
 function displayError() {
