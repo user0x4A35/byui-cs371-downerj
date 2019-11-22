@@ -79,6 +79,7 @@ class Recipe {
       data.summary.yieldSize[1]
     );
     this._allergyInfo = data.summary.allergyInfo.slice();
+    this._notes = data.summary.notes.slice();
     
     this._ingredients = [];
     for (let arr of data.ingredients) {
@@ -124,6 +125,10 @@ class Recipe {
   
   get allergyInfo() {
     return this._allergyInfo;
+  }
+  
+  get notes() {
+    return this._notes;
   }
   
   get ingredients() {

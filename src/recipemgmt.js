@@ -71,6 +71,28 @@ function constructPage(data) {
   </div>
   `;
   
+  // Create the notes, if there are any.
+  let notes = recipe.notes;
+  if (notes.length > 0) {
+    let notesString = '';
+    
+    for (let note of notes) {
+      notesString += `
+        <li>${note}</li>
+      `;
+    }
+    
+    divContent.innerHTML += `
+    <div class="section">
+      <h2>Notes</h2>
+      <hr/>
+      <ul>
+        ${notesString}
+      </ul>
+    </div>
+    `;
+  }
+  
   // Create the ingredients.
   let ingredientsString = '';
   for (let ingredient of recipe.ingredients) {
