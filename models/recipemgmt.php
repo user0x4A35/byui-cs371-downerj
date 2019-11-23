@@ -1,4 +1,5 @@
 <?php
+  $GLOBALS["DB_DIR"] = "../db";
   $GLOBALS["RECIPE_DIR"] = "../db/recipes";
   
   /**
@@ -50,6 +51,18 @@
     }
     
     return $ids;
+  }
+  
+  /**
+   *
+   */
+  function lookupRecipes($dir) {
+    $json = file_get_contents("$dir/lookup.json");
+    if ($json === false) {
+      throw new FileReadException("Error reading file: $id.json");
+    }
+    
+    return $json;
   }
   
   /**

@@ -1,5 +1,3 @@
-const RECIPE_DIR = "db/recipes";
-
 let divContent;
 let divTitles;
 let lblRecipeTitle;
