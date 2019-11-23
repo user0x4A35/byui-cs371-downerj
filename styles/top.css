@@ -80,6 +80,11 @@ select {
   top: calc(50% - 40px/2);
 }
 
+.menu, .menu-button {
+  transition: left;
+  transition-duration: 0.4s;
+}
+
 .menu {
   position: fixed;
   top: 0;
