@@ -15,6 +15,8 @@ function toggleMenu(state) {
     divMenu.style.left = `${0 - divMenu.offsetWidth}px`;
     btMenu.style.left = 0;
   } else {
+    // one-time visibility toggle
+    divMenu.style.visibility = 'visible';
     divMenu.style.left = 0;
     btMenu.style.left = `${divMenu.offsetWidth - 1}px`;
   }
