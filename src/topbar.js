@@ -2,7 +2,7 @@ let divMenu;
 let btMenu;
 let btAccount;
 
-let menuState;
+let menuState = false;
 
 function toggleMenu(state) {
   if (state !== null && state !== undefined) {
