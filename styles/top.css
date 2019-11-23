@@ -213,9 +213,15 @@ img.image-fill {
   object-fit: cover;
 }
 
+.scroll-horiz {
+  display: flex;
+  flex-direction: row;
+}
+
 .recipe-link {
   width: 200px;
   height: 220px;
+  margin-right: 10px;
 }
 
 .recipe-link a, .recipe-link a:visited {
