@@ -46,9 +46,6 @@ function showTopBar() {
 <div class="menu-shade" id="divMenuShade" hidden></div>
 
 <div class="top-bar">
-  <div class="menu-bar" hidden>
-  </div>
-  
   <label class="title" id="lblTitle">Recipe Web App</label>
 </div>
 

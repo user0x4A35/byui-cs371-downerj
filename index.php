@@ -7,7 +7,7 @@
 <html>
   <head>
     <title>Home | Recipe Web App</title>
-    <?php getMeta("Home"); ?>
+    <?php getMeta("Recipe Web App"); ?>
     
     <script src="src/ajax.js"></script>
     <script src="src/utils.js"></script>
