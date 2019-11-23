@@ -117,13 +117,17 @@ function fillIngredients(recipe) {
     
     let unitsString = '';
     if ((units !== 'ea') && (units !== '*')) {
-      let pluralEs = false;
+      let pluralEs = '';
       if (amount.value > 1) {
-        if (units === 'cup') {
-          pluralEs = true;
+        if (units === 'batch') {
+          pluralEs = 'es';
+        } else if (units.substring(units.length - 3) === 'can') {
+          pluralEs = 'es';
+        } else if (units === 'cup') {
+          pluralEs = 's';
         }
       }
-      unitsString = `${units}${(pluralEs) ? 's' : ''} `;
+      unitsString = `${units}${pluralEs} `;
     }
     let nameString = ingredient.name;
     ingredientsHtml += `
