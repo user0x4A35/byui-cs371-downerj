@@ -14,5 +14,13 @@
     "type": "breakfast",
     "dateAdded": 1574493978936,
     "allergyInfo": ["Gluten", "Egg", "Milk"]
+  },
+  "00000002": {
+    "id": "00000002",
+    "name": "Quick Bread Dough",
+    "imageUrl": null,
+    "type": "bread",
+    "dateAdded": 1574493978937,
+    "allergyInfo": ["Gluten", "Yeast"]
   }
 }

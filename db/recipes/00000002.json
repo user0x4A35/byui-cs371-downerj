@@ -1,0 +1,34 @@
+{
+  "title": "Quick Bread Dough",
+  "imageUrl": null,
+  "addedBy": "Emily Downer",
+  "summary": {
+    "prepTime": [1, 0],
+    "cookTime": [0, 0],
+    "yieldSize": ["dozen rolls", [1, 1]],
+    "allergyInfo": ["Gluten", "Yeast"],
+    "notes": [
+      "Not great for loaf bread.",
+      "Works well for pizza crust, cinnamon rolls, dinner rolls, pigs in a blanket, cheese bread, etc.",
+      "Because this is not a traditional rising dough, it is not supposed rise very high."
+    ]
+  },
+  "ingredients": [
+    ["Active dry yeast", "tbsp", [1,1]],
+    ["Warm water", "cup", [1,1]],
+    ["Sugar", "tbsp", [1,1]],
+    ["Salt", "tsp", [1,1]],
+    ["Oil", "tbsp", [2,1]],
+    ["Flour", "cup", [5,2]]
+  ],
+  "directions": [
+    "Preheat oven to 350°F.",
+    "Add yeast and sugar to water in large bowl or stand mixer.",
+    "Let sit for 10 minutes.",
+    "Add oil and salt into yeast mixture.",
+    "Gradually add flour and knead for 5 minutes.",
+    "Let rise 10 mintues, covering the bowl.",
+    "Use for any recipe that requires bread dough."
+  ]
+}
+
