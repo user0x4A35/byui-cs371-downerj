@@ -2,9 +2,17 @@
   "00000000": {
     "id": "00000000",
     "name": "Club Sugar Cookies",
-    "imageUrl": "",
+    "imageUrl": null,
     "type": "dessert",
     "dateAdded": 1574490000000,
     "allergyInfo": ["Egg", "Gluten", "Tree Nuts"]
+  },
+  "00000001": {
+    "id": "00000001",
+    "name": "Pancakes for Two",
+    "imageUrl": null,
+    "type": "breakfast",
+    "dateAdded": 1574493978936,
+    "allergyInfo": ["Gluten", "Egg", "Milk"]
   }
 }
