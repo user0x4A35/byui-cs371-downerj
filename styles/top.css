@@ -213,6 +213,29 @@ img.image-fill {
   object-fit: cover;
 }
 
+.recipe-link {
+  width: 200px;
+  height: 220px;
+}
+
+.recipe-link a, .recipe-link a:visited {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.link-image {
+  border: 1px solid black;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  line-height: 200px;
+}
+
+.link-name {
+  text-align: center;
+}
+
 @media(max-width: 400px) {
   select {
     width: 50%;

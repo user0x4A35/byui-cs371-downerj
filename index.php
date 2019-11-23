@@ -16,6 +16,7 @@
       <div class="content">
         <div class="section">
           <h2>Recently Added</h2>
+          <div class="scroll-horiz" id="divNewest"></div>
         </div>
       </div>
     </div>

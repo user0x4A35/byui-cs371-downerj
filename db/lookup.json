@@ -1,7 +1,8 @@
 {
   "00000000": {
+    "id": "00000000",
     "name": "Club Sugar Cookies",
-    "imageURL": "",
+    "imageUrl": "",
     "type": "dessert",
     "dateAdded": 1574490000000,
     "allergyInfo": ["Egg", "Gluten", "Tree Nuts"]
