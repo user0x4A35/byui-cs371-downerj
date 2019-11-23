@@ -106,6 +106,21 @@ function fillNotes(recipe) {
   }
 }
 
+const UNITS_PLURAL_ES = [
+  'batch',
+  'box',
+];
+
+const UNITS_PLURAL_S = [
+  'cup',
+  'pint',
+  'clove',
+  'packet',
+  'stick',
+  'block',
+  'can',
+];
+
 function fillIngredients(recipe) {
   let ingredientsHtml = '';
   for (let ingredient of recipe.ingredients) {
@@ -118,22 +133,18 @@ function fillIngredients(recipe) {
     let unitsString = '';
     if ((units !== 'ea') && (units !== '*')) {
       let pluralEs = '';
-      if (amount.value > 1) {
-        if (
-          (units === 'batch')
-          || (units === 'box')
-        ) {
-          pluralEs = 'es';
-        } else if (
-          (units === 'cup')
-          || (units === 'pint')
-          || (units === 'clove')
-          || (units === 'packet')
-          || (units === 'stick')
-          || (units === 'block')
-          || (units.substring(units.length - 3) === 'can')
-        ) {
-          pluralEs = 's';
+      if (amount.integer > 1) {
+        // check "es"
+        for (let unit of UNITS_PLURAL_ES) {
+          if ((units.length >= unit.length) && (units.substr(units.length - unit.length) === unit)) {
+            pluralEs = 'es';
+          }
+        }
+        // check "s"
+        for (let unit of UNITS_PLURAL_S) {
+          if ((units.length >= unit.length) && (units.substr(units.length - unit.length) === unit)) {
+            pluralEs = 's';
+          }
         }
       }
       unitsString = `${units}${pluralEs} `;

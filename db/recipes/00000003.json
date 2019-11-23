@@ -15,7 +15,7 @@
   },
   "ingredients": [
     ["Quick Bread Dough", "batch", [1,1]],
-    ["Spam®", "12 oz. can(s)", [1,1]],
+    ["Spam®", "12 oz. can", [1,1]],
     ["(Optional) Onion powder to taste", "*", [0,1]],
     ["(Optional) Butter for tops", "*", [0,1]]
   ],
