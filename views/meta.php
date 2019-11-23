@@ -1,4 +1,14 @@
 <?php
+/* TODO: Enable SSL locally
+if (!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] !== "on") {
+  $HOST = $_SERVER["HTTP_HOST"];
+  $URI = $_SERVER["REQUEST_URI"];
+  print("$HOST$URI");
+  header("Location: https://$HOST$URI", true, 301);
+  exit;
+}
+*/
+
 function getMeta($title) {
 ?>
   <meta charset="UTF-8"/>
