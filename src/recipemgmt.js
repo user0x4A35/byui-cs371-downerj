@@ -119,11 +119,20 @@ function fillIngredients(recipe) {
     if ((units !== 'ea') && (units !== '*')) {
       let pluralEs = '';
       if (amount.value > 1) {
-        if (units === 'batch') {
+        if (
+          (units === 'batch')
+          || (units === 'box')
+        ) {
           pluralEs = 'es';
-        } else if (units.substring(units.length - 3) === 'can') {
-          pluralEs = 'es';
-        } else if (units === 'cup') {
+        } else if (
+          (units === 'cup')
+          || (units === 'pint')
+          || (units === 'clove')
+          || (units === 'packet')
+          || (units === 'stick')
+          || (units === 'block')
+          || (units.substring(units.length - 3) === 'can')
+        ) {
           pluralEs = 's';
         }
       }
