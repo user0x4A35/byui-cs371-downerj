@@ -14,7 +14,7 @@
       <?php showTopBar("home"); ?>
       
       <div class="content">
-        <div class="section">
+        <div class="homepage-section">
           <h2>Recently Added</h2>
           <div class="scroll-horiz" id="divNewest"></div>
         </div>
