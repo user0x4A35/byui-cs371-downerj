@@ -54,7 +54,7 @@ if (isset($_GET["id"])) {
               <strong>Prep Time</strong><label class="time-note-marker" hidden><sup>&dagger;</sup></label>:
               <label id="lblPrepTime"></label>
             </li>
-            <li>
+            <li id="liCookTime">
               <strong>Cook Time</strong><label class="time-note-marker" hidden><sup>&dagger;</sup></label>:
               <label id="lblCookTime"></label>
             </li>

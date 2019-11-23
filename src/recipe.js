@@ -14,6 +14,10 @@ class RecipeDuration {
     return this._minutes;
   }
   
+  get value() {
+    return this._hours * 60 + this._minutes;
+  }
+  
   add(duration) {
     let hours = this._hours + duration.hours;
     let minutes = this._minutes + duration.minutes;

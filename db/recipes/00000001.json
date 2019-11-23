@@ -15,7 +15,7 @@
     ["Brown sugar", "tbsp", [1,1]],
     ["Salt", "tsp", [1,4]],
     ["Milk", "cup", [2,3]],
-    ["Egg", "ea", [1,1]],
+    ["Egg(s)", "ea", [1,1]],
     ["Oil", "cup", [1,4]]
   ],
   "directions": [

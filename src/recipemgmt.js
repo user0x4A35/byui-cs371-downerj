@@ -5,6 +5,7 @@ let lblAddedBy;
 let divImage;
 let divSummary;
 let lblPrepTime;
+let liCookTime;
 let lblCookTime;
 let lblTotalTime;
 let lblYieldSize;
@@ -45,9 +46,13 @@ function fillPrepTime(recipe) {
 
 function fillCookTime(recipe) {
   let cookTime = recipe.cookTime;
-  let cookHoursString = (cookTime.hours > 0) ? `${cookTime.hours} hr` : '';
-  let cookMinutesString = (cookTime.minutes > 0) ? ` ${cookTime.minutes} min` : '';
-  lblCookTime.innerText = `${cookHoursString}${cookMinutesString}`;
+  if (cookTime.value > 0) {
+    let cookHoursString = (cookTime.hours > 0) ? `${cookTime.hours} hr` : '';
+    let cookMinutesString = (cookTime.minutes > 0) ? ` ${cookTime.minutes} min` : '';
+    lblCookTime.innerText = `${cookHoursString}${cookMinutesString}`;
+  } else {
+    liCookTime.hidden = true;
+  }
 }
 
 function fillTotalTime(recipe) {
@@ -293,6 +298,7 @@ window.addEventListener('load', () => {
   divImage = elemById('divImage');
   divSummary = elemById('divSummary');
   lblPrepTime = elemById('lblPrepTime');
+  liCookTime = elemById('liCookTime');
   lblCookTime = elemById('lblCookTime');
   lblTotalTime = elemById('lblTotalTime');
   lblYieldSize = elemById('lblYieldSize');
