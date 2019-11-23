@@ -35,7 +35,7 @@ if (isset($_GET["id"])) {
   </head>
   <body>
     <div class="wrapper">
-      <?php showTopBar("recipe"); ?>
+      <?php showTopBar(); ?>
       
       <div class="content" id="divContent">
         <div class="titles" id="divTitles" hidden>

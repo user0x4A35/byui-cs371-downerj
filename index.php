@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <?php showTopBar("home"); ?>
+      <?php showTopBar(); ?>
       
       <div class="content">
         <div class="homepage-section">
