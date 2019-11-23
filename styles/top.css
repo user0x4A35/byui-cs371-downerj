@@ -256,7 +256,7 @@ select {
 }
 
 input[type="checkbox"]:checked ~ .checkmark {
-  background-color: #777777;
+  background-color: #ffc547;
 }
 
 input[type="checkbox"]:checked ~ .checkmark:after {
@@ -289,7 +289,7 @@ img.image-fill {
   text-align: center;
   line-height: 200px;
   margin: 0 auto;
-  background-color: var(--main-color);
+  background-color: #eeeeee;
   border-radius: 10px;
 }
 
