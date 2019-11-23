@@ -3,7 +3,7 @@
     "id": "00000000",
     "name": "Club Sugar Cookies",
     "imageUrl": null,
-    "type": "dessert",
+    "type": "Dessert",
     "dateAdded": 1574490000000,
     "allergyInfo": ["Egg", "Gluten", "Tree Nuts"]
   },
@@ -11,7 +11,7 @@
     "id": "00000001",
     "name": "Pancakes for Two",
     "imageUrl": null,
-    "type": "breakfast",
+    "type": "Breakfast",
     "dateAdded": 1574493978936,
     "allergyInfo": ["Gluten", "Egg", "Milk"]
   },
@@ -19,8 +19,16 @@
     "id": "00000002",
     "name": "Quick Bread Dough",
     "imageUrl": null,
-    "type": "bread",
+    "type": "Bread",
     "dateAdded": 1574493978937,
     "allergyInfo": ["Gluten", "Yeast"]
+  },
+  "00000003": {
+    "id": "00000003",
+    "name": "Spam® Rolls",
+    "imageUrl": null,
+    "type": ["Main dish", "Bread"],
+    "dateAdded": 1574493978938,
+    "allergyInfo": ["Gluten", "Yeast", "Milk"]
   }
 }
