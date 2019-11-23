@@ -226,10 +226,11 @@ img.image-fill {
 
 .link-image {
   border: 1px solid black;
-  width: 100%;
+  width: 200px;
   height: 200px;
   text-align: center;
   line-height: 200px;
+  margin: 0 auto;
 }
 
 .link-name {

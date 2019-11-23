@@ -3,18 +3,13 @@ const MAX_RECENTS = 10;
 let divNewest;
 
 function createRecipeLink(info) {
-  let imageString;
-  if (info.imageUrl) {
-    imageString = `<img src="${info.imageUrl}" alt="${info.name}"/>`;
-  } else {
-    imageString = 'No image available.';
-  }
+  info.imageUrl = info.imageUrl || 'assets/icons/recipe.png';
   
   return `
   <div class="recipe-link">
     <a href="recipe.php?id=${info.id}">
       <div class="link-image">
-        ${imageString}
+        <img src="${info.imageUrl}" alt="${info.name}" width="200" height="200"/>
       </div>
       <div class="link-name">
         ${info.name}
