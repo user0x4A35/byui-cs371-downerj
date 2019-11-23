@@ -2,9 +2,7 @@
 
 :root {
   --font-family: 'Open Sans', sans-serif;
-  --highlight-color: #fce191;
-  --shadow-color: #deb94c;
-  --bar-color: #ffedb5;
+
 }
 
 * {
@@ -14,6 +12,7 @@
 body {
   margin: 0;
   font-family: var(--font-family);
+  background-color: #dddddd;
   
   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
   -moz-user-select: none; /* mozilla browsers */
@@ -51,6 +50,11 @@ a, a:visited {
   cursor: pointer;
 }
 
+hr {
+  border-color: #777777;
+  border-style: solid;
+}
+
 /*
 ul.no-bullets, ol.no-bullets {
   list-style-type: none;
@@ -59,7 +63,8 @@ ul.no-bullets, ol.no-bullets {
 */
 
 select {
-  border: 1px solid black;
+  border: 1px solid #777777;
+  border-radius: 5px;
   background-color: white;
   font-family: var(--font-family);
   width: 200px;
@@ -95,7 +100,7 @@ select {
   left: 0;
   width: 400px;
   height: 100%;
-  background-color: var(--highlight-color);
+  background-color: #aaaaaa;
   z-index: 1000;
 }
 
@@ -120,8 +125,8 @@ select {
   flex-direction: row;
   background-color: #ffffff;
   font-size: 20px;
-  box-shadow: var(--shadow-color) 3px 3px;
   margin-bottom: 10px;
+  border: 2px solid #666666;
 }
 
 .menu-link {
@@ -146,27 +151,15 @@ select {
   top: calc(50% - 30px/2);
 }
 
-.top-bar-button {
-  z-index: 998;
-  background-color: white;
-}
-
-.account-button, .menu-button {
-  z-index: 999;
-  background-color: white;
-}
-
 .menu-button {
+  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
   width: 50px;
-  height: 50px;
-  background-color: var(--highlight-color);
+  height: calc(50px - 2px);
+  background-color: #aaaaaa;
   border-radius: 0 0 10px 0;
-  border-color: var(--shadow-color);
-  border-width: 0 2px 2px 0;
-  border-style: solid;
 }
 
 .top-bar {
@@ -179,7 +172,8 @@ select {
   flex-direction: row;
   overflow: hidden;
   z-index: 997;
-  background-color: var(--bar-color);
+  background-color: #ffffff;
+  border-bottom: 2px solid #666666;
 }
 
 .title {
@@ -188,26 +182,6 @@ select {
   font-size: 30px;
   line-height: 50px;
 }
-
-/*
-.top-bar-button {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: calc(50px - 1px*2);
-  border-right: 1px solid black;
-  margin: 0px;
-}
-
-.account-button {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-}
-*/
 
 .content {
   position: absolute;
@@ -223,17 +197,13 @@ select {
   padding: 10px;
 }
 
-.section {
-  position: relative;
-  border: 1px solid #000;
-  margin: 10px;
-  padding: 10px;
-}
-
-.homepage-section {
+.section, .homepage-section {
   position: relative;
   margin: 10px;
   padding: 10px;
+  background-color: #ffffff;
+  border-radius: 7px;
+  border: 2px solid #aaaaaa;
 }
 
 .no-padding {
@@ -260,9 +230,11 @@ select {
 .checkmark {
   position: relative;
   display: inline-block;
-  border: 1px solid black;
+  border: 1px solid #777777;
+  border-radius: 5px;
   width: 30px;
   height: 30px;
+  background-color: white;
 }
 
 .checkmark:after {
@@ -284,7 +256,7 @@ select {
 }
 
 input[type="checkbox"]:checked ~ .checkmark {
-  background-color: black;
+  background-color: #777777;
 }
 
 input[type="checkbox"]:checked ~ .checkmark:after {
@@ -317,10 +289,20 @@ img.image-fill {
   text-align: center;
   line-height: 200px;
   margin: 0 auto;
+  background-color: var(--main-color);
+  border-radius: 10px;
 }
 
 .link-name {
   text-align: center;
+}
+
+@media (min-width: 520px) {
+  .content {
+    position: absolute;
+    width: 500px;
+    left: calc(50% - 500px/2);
+  }
 }
 
 @media (max-width: 400px) {
