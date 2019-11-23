@@ -32,6 +32,11 @@ if (isset($_GET["id"])) {
   <head>
     <title><?php print($pageTitle); ?></title>
     <?php getMeta($pageTitle); ?>
+    
+    <script src="src/ajax.js"></script>
+    <script src="src/rational.js"></script>
+    <script src="src/recipe.js"></script>
+    <script src="src/utils.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -108,10 +113,6 @@ if (isset($_GET["id"])) {
       </div>
     </div>
     
-    <script src="src/ajax.js"></script>
-    <script src="src/rational.js"></script>
-    <script src="src/recipe.js"></script>
-    <script src="src/utils.js"></script>
     <script src="src/recipemgmt.js"></script>
   </body>
 </html>

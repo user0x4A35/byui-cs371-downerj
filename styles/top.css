@@ -74,8 +74,29 @@ select {
   top: calc(50% - 40px/2);
 }
 
-.menu-button, .top-bar, .top-bar-button, .account-button {
-  z-index: 1;
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 100%;
+  border: 1px solid black;
+  background-color: white;
+  z-index: 1000;
+}
+
+.top-bar {
+  z-index: 997;
+  background-color: white;
+}
+
+.top-bar-button {
+  z-index: 998;
+  background-color: white;
+}
+
+.account-button, .menu-button {
+  z-index: 999;
   background-color: white;
 }
 
@@ -251,8 +272,14 @@ img.image-fill {
   text-align: center;
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
   select {
     width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .menu {
+    width: calc(100% - 100px + 1px*2);
   }
 }

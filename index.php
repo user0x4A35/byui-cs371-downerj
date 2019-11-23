@@ -8,6 +8,9 @@
   <head>
     <title>Home | Recipe Web App</title>
     <?php getMeta("Home"); ?>
+    
+    <script src="src/ajax.js"></script>
+    <script src="src/utils.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -21,8 +24,6 @@
       </div>
     </div>
     
-    <script src="src/ajax.js"></script>
-    <script src="src/utils.js"></script>
     <script src="src/home.js"></script>
   </body>
 </html>
