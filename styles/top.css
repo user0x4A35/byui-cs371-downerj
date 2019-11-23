@@ -216,6 +216,8 @@ img.image-fill {
 .scroll-horiz {
   display: flex;
   flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .recipe-link {
