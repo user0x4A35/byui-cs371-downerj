@@ -23,12 +23,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  margin: 10px;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 h2 {
   font-size: 30px;
   font-weight: bold;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: normal;
 }
 
 ul, ol {
@@ -48,6 +54,10 @@ select {
   background-color: white;
   font-family: var(--font-family);
   width: 200px;
+}
+
+.titles {
+  margin: 10px;
 }
 
 .clickable, .button {

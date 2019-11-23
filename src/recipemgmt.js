@@ -1,7 +1,9 @@
 const RECIPE_DIR = "db/recipes";
 
 let divContent;
-let h1Title;
+let divTitles;
+let lblRecipeTitle;
+let lblAddedBy;
 let divImage;
 let divSummary;
 let lblPrepTime;
@@ -18,8 +20,9 @@ let divDirections;
 let divDirectionsList;
 
 function fillTitle(recipe) {
-  h1Title.innerText = recipe.title;
-  h1Title.hidden = false;
+  lblRecipeTitle.innerText = recipe.title;
+  lblAddedBy.innerText = recipe.addedBy || "Anonymous";
+  divTitles.hidden = false;
 }
 
 function fillImage(recipe) {
@@ -286,7 +289,9 @@ function getRecipe(id) {
 
 window.addEventListener('load', () => {
   divContent = elemById('divContent');
-  h1Title = elemById('h1Title');
+  divTitles = elemById('divTitles');
+  lblRecipeTitle = elemById('lblRecipeTitle');
+  lblAddedBy = elemById('lblAddedBy');
   divImage = elemById('divImage');
   divSummary = elemById('divSummary');
   lblPrepTime = elemById('lblPrepTime');

@@ -38,7 +38,10 @@ if (isset($_GET["id"])) {
       <?php showTopBar("recipe"); ?>
       
       <div class="content" id="divContent">
-        <h1 id="h1Title" hidden></h1>
+        <div class="titles" id="divTitles" hidden>
+          <h1><label id="lblRecipeTitle"></label></h1>
+          <h3>By&nbsp;<label id="lblAddedBy"></label></h3>
+        </div>
         
         <div class="section no-padding" id="divImage" hidden>
         </div>

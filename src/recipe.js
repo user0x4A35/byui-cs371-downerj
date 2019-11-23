@@ -96,6 +96,7 @@ class Recipe {
   constructor(data) {
     this._title = data.title;
     this._imageUrl = data.imageUrl;
+    this._addedBy = data.addedBy;
     this._prepTime = new RecipeDuration(
       data.summary.prepTime[0],
       data.summary.prepTime[1]
@@ -134,6 +135,10 @@ class Recipe {
   
   get imageUrl() {
     return this._imageUrl;
+  }
+  
+  get addedBy() {
+    return this._addedBy;
   }
   
   get prepTime() {
