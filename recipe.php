@@ -74,11 +74,11 @@ if (isset($_GET["id"])) {
             <li>
               <strong>Yield Scale</strong>:
               <select id="selYieldScale">
-                <option value="default">Default</option>
-                <option value="third">1/3&times;</option>
-                <option value="half">1/2&times;</option>
-                <option value="double">2&times;</option>
-                <option value="triple">3&times;</option>
+                <option value="third">1/3&times; Recipe</option>
+                <option value="half">1/2&times; Recipe</option>
+                <option value="default">Default Recipe</option>
+                <option value="double">2&times; Recipe</option>
+                <option value="triple">3&times; Recipe</option>
               </select>
             </li>
             <li>

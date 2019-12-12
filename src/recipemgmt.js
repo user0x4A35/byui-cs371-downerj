@@ -266,9 +266,10 @@ function constructPage(data) {
   fillIngredients(recipe);
   fillDirections(recipe);
   
-  selYieldScale.selectedIndex = 0;
+  // Set Yield Size dropdown to "Default" on load.
+  selYieldScale.selectedIndex = 2;
   selYieldScale.addEventListener('input', () => {
-    updateYieldScale(recipe)
+    updateYieldScale(recipe);
   });
 }
 
